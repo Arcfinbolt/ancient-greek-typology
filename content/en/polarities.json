@@ -1,0 +1,9 @@
+{
+  "rule":   { "question": "Who decides, and in whose sight?", "anchor": "Assertiveness" },
+  "range":  { "question": "New or known?",                    "anchor": "Openness to experience" },
+  "form":   { "question": "Plan or moment?",                  "anchor": "Conscientiousness" },
+  "accord": { "question": "Smooth or sharp?",                 "anchor": "Agreeableness" },
+  "temper": { "question": "Calm or storm?",                   "anchor": "Emotional stability" },
+  "tie":    { "question": "Tied or free?",                    "anchor": "Closeness against self-reliance" },
+  "focus":  { "question": "People or things?",                "anchor": "Interest in people against interest in things" }
+}

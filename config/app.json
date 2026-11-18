@@ -1,0 +1,20 @@
+{
+  "about": "How the test is presented. itemOrder: `balanced` (each page takes one statement from every polarity), `shuffled` (seeded, same for everyone) or `fixed` (the order in config/items.json). itemsPerPage 0 puts every statement on one page. resultSections lists the blocks of the result page in order; each name is a function in js/views/result-sections.js.",
+
+  "defaultLocale": "en",
+  "locales": ["en"],
+
+  "itemOrder": "balanced",
+  "orderSeed": 14,
+  "itemsPerPage": 7,
+
+  "resultSections": ["headline", "lead", "second", "neglected", "polarities", "method", "actions"],
+
+  "features": {
+    "saveProgress": true,
+    "shareLink": true,
+    "godsPage": true
+  },
+
+  "storageKey": "pantheon-sorter"
+}

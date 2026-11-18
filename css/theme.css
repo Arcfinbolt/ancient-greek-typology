@@ -1,0 +1,55 @@
+/* Every colour, typeface and measure the interface uses. Change the look here;
+   app.css only refers to these tokens.
+
+   Layout idea: a facing-page edition. The god's Greek name and word-portrait
+   sit on the left leaf, the reading on the right.
+   Colour idea: the two Loeb Classical Library bindings. Green carries what is
+   Greek and what is yours; red is kept for a god's wrath. */
+
+:root {
+  --paper: #f5f6f2;
+  --paper-deep: #e8ebe5;
+  --ink: #18211c;
+  --ink-soft: #55615a;
+  --rule: #cbd2ca;
+  --green: #1e5c44;
+  --red: #8b2d29;
+
+  --font-display: 'GFS Didot', Didot, 'Bodoni 72', 'Bodoni MT', 'Noto Serif Display', Georgia, serif;
+  --font-body: 'Commissioner Variable', Commissioner, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+
+  --text: 1.0625rem;
+  --text-small: 0.875rem;
+  --text-large: 1.25rem;
+  --leading: 1.6;
+
+  --page: 68rem;
+  --measure: 35rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #101613;
+    --paper-deep: #1b2520;
+    --ink: #e8ece6;
+    --ink-soft: #a3afa7;
+    --rule: #303d36;
+    --green: #86c7a5;
+    --red: #e59a93;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --paper: #101613;
+  --paper-deep: #1b2520;
+  --ink: #e8ece6;
+  --ink-soft: #a3afa7;
+  --rule: #303d36;
+  --green: #86c7a5;
+  --red: #e59a93;
+  color-scheme: dark;
+}

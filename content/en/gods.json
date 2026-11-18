@@ -1,0 +1,100 @@
+{
+  "zeus": {
+    "name": "Zeus", "greek": "Ζεύς", "pole": "Command",
+    "does": "Takes charge, sets terms, assigns roles.",
+    "gift": "Decision, order, protection of those under him.",
+    "wrath": "Domination, entitlement, retaliation.",
+    "read": "Iliad 8.18–27; Theogony 881–885"
+  },
+  "hades": {
+    "name": "Hades", "greek": "Ἅιδης", "pole": "Reserve",
+    "does": "Keeps his own realm and counsel, unseen.",
+    "gift": "Depth, discretion, freedom from applause.",
+    "wrath": "Withdrawal, secrecy, coldness nobody can reach.",
+    "read": "Iliad 9.158–159; Plato, Cratylus 403a–404b"
+  },
+  "hermes": {
+    "name": "Hermes", "greek": "Ἑρμῆς", "pole": "Roaming",
+    "does": "Seeks the new route, idea or trade.",
+    "gift": "Invention, quick learning, joining separate worlds.",
+    "wrath": "Restlessness, glibness, deceit.",
+    "read": "Homeric Hymn 4; Iliad 24.334–335"
+  },
+  "hestia": {
+    "name": "Hestia", "greek": "Ἑστία", "pole": "Dwelling",
+    "does": "Keeps the centre, the routine, the fire.",
+    "gift": "Constancy, calm, continuity.",
+    "wrath": "Inertia, insularity, refusal of change.",
+    "read": "Homeric Hymn 5.21–32; Plato, Phaedrus 247a"
+  },
+  "apollo": {
+    "name": "Apollo", "greek": "Ἀπόλλων", "pole": "Measure",
+    "does": "Plans, orders, holds to a standard.",
+    "gift": "Mastery, clarity, foresight.",
+    "wrath": "Rigidity, coldness, punishment of flaws.",
+    "read": "Homeric Hymn 3.131–132; Plato, Protagoras 343a–b"
+  },
+  "dionysus": {
+    "name": "Dionysus", "greek": "Διόνυσος", "pole": "Release",
+    "does": "Follows the moment into full immersion.",
+    "gift": "Aliveness, spontaneity, shared joy.",
+    "wrath": "Excess, chaos, savagery.",
+    "read": "Euripides, Bacchae; Plutarch, Antony 24"
+  },
+  "aphrodite": {
+    "name": "Aphrodite", "greek": "Ἀφροδίτη", "pole": "Accord",
+    "does": "Draws people together, pleases, persuades.",
+    "gift": "Rapport, grace, peacemaking.",
+    "wrath": "Flattery, vanity, flight from conflict.",
+    "read": "Iliad 14.214–217; Theogony 203–206"
+  },
+  "ares": {
+    "name": "Ares", "greek": "Ἄρης", "pole": "Contest",
+    "does": "Confronts, competes, strikes.",
+    "gift": "Courage, candour, force in defence.",
+    "wrath": "Aggression, cruelty, strife for its own sake.",
+    "read": "Iliad 5.888–891"
+  },
+  "athena": {
+    "name": "Athena", "greek": "Ἀθηνᾶ", "pole": "Composure",
+    "does": "Stays cool and thinks ahead.",
+    "gift": "Judgement under pressure, strategy, self-command.",
+    "wrath": "Coldness, contempt, pride in cleverness.",
+    "read": "Iliad 1.193–218; Odyssey 13.296–299"
+  },
+  "poseidon": {
+    "name": "Poseidon", "greek": "Ποσειδῶν", "pole": "Surge",
+    "does": "Feels at full force and shows it.",
+    "gift": "Emotional power, passion, sensitivity as radar.",
+    "wrath": "Rage, grudge, moods that flood the room.",
+    "read": "Odyssey 5.282–296; Apollodorus 3.14.1"
+  },
+  "hera": {
+    "name": "Hera", "greek": "Ἥρα", "pole": "Bond",
+    "does": "Commits, belongs, guards the house.",
+    "gift": "Fidelity, dependability, institutions that last.",
+    "wrath": "Jealousy, possessiveness, vendetta.",
+    "read": "Iliad 1.536–569; Pausanias 8.22.2"
+  },
+  "artemis": {
+    "name": "Artemis", "greek": "Ἄρτεμις", "pole": "Freedom",
+    "does": "Keeps her own ground and her own rules.",
+    "gift": "Independence, focus, defence of the unprotected.",
+    "wrath": "Aloofness, merciless boundaries, isolation.",
+    "read": "Callimachus, Hymn 3.6–25; Odyssey 6.102–109"
+  },
+  "demeter": {
+    "name": "Demeter", "greek": "Δημήτηρ", "pole": "Tending",
+    "does": "Feeds, teaches, raises.",
+    "gift": "Nurture, patience, the growth of others.",
+    "wrath": "Smothering, withholding, collapse at loss.",
+    "read": "Homeric Hymn 2.302–313 and 470–482"
+  },
+  "hephaestus": {
+    "name": "Hephaestus", "greek": "Ἥφαιστος", "pole": "Making",
+    "does": "Builds, repairs, perfects objects.",
+    "gift": "Craft, invention, perseverance.",
+    "wrath": "Bitterness, hiding in work, revenge by device.",
+    "read": "Iliad 18.369–421; Odyssey 8.266–366"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "pantheon-sorter",
+  "version": "0.1.0",
+  "description": "A 28-statement sorter for the Pantheon Typology: fourteen Greek gods on seven polarities. Static site, no build step, no dependencies.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "test": "node --test",
+    "validate": "node tools/validate.mjs",
+    "check": "npm run validate && npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

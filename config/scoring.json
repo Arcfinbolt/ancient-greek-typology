@@ -1,0 +1,26 @@
+{
+  "about": "Every cut-off in the test. A polarity score is (mean rating of the first god's statements - mean rating of the second god's) / (scale.max - scale.min), so it runs from -1 to +1 whatever the number of statements or scale points. With two statements per god on a 0-4 scale, 0.25 equals 2 raw points out of 8.",
+
+  "scale": { "min": 0, "max": 4 },
+
+  "bands": [
+    { "id": "balanced", "from": 0,    "describe": false },
+    { "id": "lean",     "from": 0.25, "describe": true },
+    { "id": "clear",    "from": 0.5,  "describe": true },
+    { "id": "strong",   "from": 0.75, "describe": true }
+  ],
+
+  "tiers": {
+    "poleFrom": 0.5,
+    "clearLeadGap": 0.25,
+    "secondFrom": 0.25
+  },
+
+  "result": {
+    "minParagraphs": 3,
+    "fallbackBand": "lean"
+  },
+
+  "norms": null,
+  "displayMax": 1
+}

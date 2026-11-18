@@ -1,0 +1,12 @@
+{
+  "about": "Structure only: which gods exist and which two face each other. Names and all prose live in content/<locale>/. A positive polarity score points to `first`, a negative one to `second`.",
+  "polarities": [
+    { "id": "rule",   "first": "zeus",      "second": "hades",      "bigFive": true },
+    { "id": "range",  "first": "hermes",    "second": "hestia",     "bigFive": true },
+    { "id": "form",   "first": "apollo",    "second": "dionysus",   "bigFive": true },
+    { "id": "accord", "first": "aphrodite", "second": "ares",       "bigFive": true },
+    { "id": "temper", "first": "athena",    "second": "poseidon",   "bigFive": true },
+    { "id": "tie",    "first": "hera",      "second": "artemis",    "bigFive": false },
+    { "id": "focus",  "first": "demeter",   "second": "hephaestus", "bigFive": false }
+  ]
+}

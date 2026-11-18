@@ -1,0 +1,90 @@
+{
+  "app": {
+    "title": "Pantheon",
+    "documentTitle": "Pantheon Sorter",
+    "footer": "Pantheon Typology. A provisional sorter: the cut-offs have not been normed.",
+    "loading": "Loading the test…"
+  },
+
+  "nav": {
+    "home": "Pantheon",
+    "test": "Take the test",
+    "result": "Your result",
+    "gods": "The fourteen gods"
+  },
+
+  "intro": {
+    "headline": "Find the god you lead with, and the one you neglect.",
+    "lede": "Fourteen Greek gods stand at the two ends of seven polarities, such as Athena’s composure against Poseidon’s surge. Rate {count} statements and see where you stand on each.",
+    "start": "Start the test",
+    "resume": "Continue the test",
+    "seeResult": "See your result",
+    "wheelCaption": "Each line joins two gods who pull in opposite directions.",
+    "facts": [
+      { "term": "About five minutes", "detail": "{count} statements on {pages} short pages." },
+      { "term": "Stays in your browser", "detail": "Nothing you answer is sent anywhere." },
+      { "term": "Provisional", "detail": "The cut-offs have not been normed yet, so read the result as a first sketch." }
+    ]
+  },
+
+  "quiz": {
+    "instruction": "Compared with most people you know, how true is each statement of you?",
+    "scaleHelp": "The five circles run from far less true of you, on the left, to far more, on the right. The middle one means about the same.",
+    "scale": ["Far less", "Less", "About the same", "More", "Far more"],
+    "scaleSpoken": ["far less true of me", "less true of me", "about the same", "more true of me", "far more true of me"],
+    "page": "Page {page} of {pages}",
+    "progress": "{answered} of {count} answered",
+    "back": "Back",
+    "next": "Next page",
+    "finish": "See my result",
+    "missingOne": "1 statement on this page still needs an answer.",
+    "missingMany": "{n} statements on this page still need an answer."
+  },
+
+  "result": {
+    "kicker": "Your result",
+    "code": {
+      "clear": "{lead}–{second}",
+      "alone": "{lead}",
+      "shared": "{lead} / {second}",
+      "pantheios": "Pantheios"
+    },
+    "tier": { "clear": "Clear lead", "shared": "Shared lead", "pantheios": "No single lead" },
+    "band": { "balanced": "balanced", "lean": "leans", "clear": "clear", "strong": "strong" },
+    "leadTitle": "{god} leads",
+    "secondTitle": "{god} comes second",
+    "neglectedTitle": "{god} is the god you neglect",
+    "neglectedRule": "The Greek rule is that every god is owed honour. The one opposite your lead is the one you are most likely to skip.",
+    "polaritiesTitle": "Your seven polarities",
+    "polaritiesIntro": "A bar that reaches further from the centre means a stronger pull toward that god.",
+    "leaningsTitle": "Your leanings",
+    "describedAbove": "Described above.",
+    "balancedNote": "Balanced: neither god pulls clearly.",
+    "barLabel": "{band} {god}",
+    "barBalanced": "balanced",
+    "barSpoken": "{first} against {second}: {reading}",
+    "methodTitle": "How to read this",
+    "retake": "Retake the test",
+    "takeYourself": "Take the test yourself",
+    "retakeConfirm": "Clear my answers and start again",
+    "copy": "Copy a link to this result",
+    "copied": "Link copied",
+    "copyManual": "Copy this link:",
+    "sharedNotice": "You are looking at a shared result. Your own answers are untouched.",
+    "incomplete": "Answer every statement to see a result."
+  },
+
+  "cloud": {
+    "label": "Words for {god}",
+    "key": { "gift": "gift", "wrath": "wrath", "emblem": "emblem" }
+  },
+
+  "gods": {
+    "title": "The fourteen gods",
+    "intro": "Seven polarities with two gods each. In every word-portrait, larger words matter more to the god’s character.",
+    "gift": "Gift",
+    "wrath": "Wrath",
+    "read": "Where to read it",
+    "against": "{first} against {second}"
+  }
+}
