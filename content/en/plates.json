@@ -19,9 +19,9 @@
   },
 
   "paintings": {
-    "zeus":       { "title": "Jupiter and Thetis", "detail": "Jean-Auguste-Dominique Ingres, 1811. Musée Granet, Aix-en-Provence." },
-    "hades":      { "title": "Pluto", "detail": "Agostino Carracci, 1592. Galleria Estense, Modena." },
-    "hermes":     { "title": "Mercury", "detail": "Hendrick Goltzius, 1611. Mauritshuis, The Hague, on loan to the Frans Hals Museum, Haarlem." },
+    "zeus":       { "title": "Jupiter and Thetis (detail)", "detail": "Jean-Auguste-Dominique Ingres, 1811. Musée Granet, Aix-en-Provence." },
+    "hades":      { "title": "Pluto and Proserpina", "detail": "Detail of Orpheus and Eurydice. Peter Paul Rubens, 1636 to 1638. Museo del Prado, Madrid." },
+    "hermes":     { "title": "Mercury (detail)", "detail": "Hendrick Goltzius, 1611. Mauritshuis, The Hague, on loan to the Frans Hals Museum, Haarlem." },
     "hestia":     { "title": "Vestals at the Hearth of Vesta", "detail": "Jean Raoux, early 18th century. Herzog Anton Ulrich-Museum, Braunschweig." },
     "apollo":     { "title": "Apollo, God of Light, with Urania", "detail": "Charles Meynier, 1798. Cleveland Museum of Art." },
     "dionysus":   { "title": "Bacchus", "detail": "Caravaggio, about 1596. Uffizi, Florence." },

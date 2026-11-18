@@ -34,8 +34,7 @@ export function plate(god, data, { set = 'statues', sizes = '(min-width: 56rem) 
     decoding: 'async',
   });
 
-  const shape = file.shape ? ` plate--${file.shape}` : '';
-  return h('figure', { class: `plate plate--${set}${shape}${extraClass ? ` ${extraClass}` : ''}`, 'data-god': god },
+  return h('figure', { class: `plate plate--${set}${extraClass ? ` ${extraClass}` : ''}`, 'data-god': god },
     h('div', { class: 'plate__frame', style: { 'aspect-ratio': `${width} / ${height}` } }, img),
     caption && words.title && h('figcaption', { class: 'plate__caption' },
       h('span', { class: 'plate__title' }, words.title),

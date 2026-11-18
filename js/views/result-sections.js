@@ -88,7 +88,7 @@ export const sections = {
             standing.map((god, i) => plate(god, data, { set: 'statues', eager: true, sizes: '(min-width: 56rem) 24rem, 92vw', extraClass: i ? 'verdict__second' : 'verdict__lead' })),
           )
         : h('div', { class: 'verdict__plates verdict__plates--slices' },
-            (data.plates.hero || []).map((god) => slice(god, data, { set: 'statues' })),
+            ((data.plates.hero || {}).marble || []).map((god) => slice(god, data, { set: 'statues' })),
           ),
     );
   },
@@ -97,20 +97,28 @@ export const sections = {
   wheel({ data, report }) {
     const ui = data.content.ui.result;
     const gods = data.content.gods;
-    const pulls = report.polarities.filter((row) => row.god).sort((a, b) => b.strength - a.strength);
+    // All seven, strongest first. A polarity with no pull either way is "at rest".
+    const rows = [...report.polarities].sort((a, b) => b.strength - a.strength);
+    const pulls = rows.filter((row) => row.god);
     const reading = pulls.length ? fill(ui.wheelStrongest, { god: gods[pulls[0].god].name }) : ui.wheelStill;
     return h('section', { class: 'compass' },
       h('div', { class: 'compass__text' },
         h('p', { class: 'kicker' }, ui.wheelKicker),
         h('h2', { class: 'section-title' }, ui.wheelTitle),
         h('p', { class: 'section-intro' }, ui.wheelIntro),
-        pulls.length > 0 && h('ol', { class: 'compass__order', 'aria-label': ui.wheelOrder },
-          pulls.map((row, i) => h('li', { class: i === 0 ? 'is-marked' : null, 'data-god': row.god },
-            emblem(row.god, { size: 30, solid: i === 0 }),
-            h('span', { class: 'compass__god' }, gods[row.god].name),
-            h('span', { class: 'compass__pole' }, gods[row.god].pole),
-            h('span', { class: `chip chip--${row.band}` }, ui.band[row.band]),
-          )),
+        h('ol', { class: 'compass__order', 'aria-label': ui.wheelOrder },
+          rows.map((row, i) => (row.god
+            ? h('li', { class: i === 0 ? 'is-marked' : null, 'data-god': row.god },
+                emblem(row.god, { size: 30, solid: i === 0 }),
+                h('span', { class: 'compass__god' }, gods[row.god].name),
+                h('span', { class: 'compass__pole' }, gods[row.god].pole),
+                h('span', { class: `chip chip--${row.band}` }, ui.band[row.band]),
+              )
+            : h('li', { class: 'is-resting' },
+                h('span', { class: 'compass__rest', 'aria-hidden': 'true' }),
+                h('span', { class: 'compass__god' }, fill(ui.wheelRest, { first: gods[row.first].name, second: gods[row.second].name })),
+                h('span', { class: `chip chip--${row.band}` }, ui.band[row.band]),
+              ))),
         ),
         h('p', { class: 'compass__strongest' }, reading),
       ),

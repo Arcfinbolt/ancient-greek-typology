@@ -93,7 +93,7 @@ The look is a sculpture gallery: a page the colour of marble by day and of the u
 - **Plates.** Every god has a statue, shown in black and white and cropped to a head-and-shoulders plate, and a painting, shown in colour. Each has a title and a caption, and every source is listed on the credits page (`#credits`).
 - **Two editions.** `marble` shows statues only. `paint` adds the painting of each god beside the reading and on the gods page, and puts two paintings among the three plates on the opening page. A visitor switches between them in the footer; `?plates=marble` or `?plates=paint` in the address sets it for a link.
 - **Each god has a colour and a sign.** Any element with `data-god="<id>"` takes that god's colour through the `--god` token. It is used for thin rules, small labels and the points on the wheel, never for large areas. The sign is a fine line drawing in a ring: the thunderbolt for Zeus, the owl for Athena, the trident for Poseidon and so on.
-- **The wheel.** A ring runs round the outside and carries the fourteen signs. On the result page it also carries the seven points of the result: one on each line, further from the centre the stronger the pull, in the colour of the god it leans to. The strongest god's cell is filled and its point is ringed; the dotted circles mark where the bands of `config/scoring.json` begin.
+- **The wheel.** A ring runs round the outside and carries the fourteen signs. On the result page it also carries seven dots, one on every line: a dot sits toward the god it leans to, further from the centre the stronger the pull, in that god's colour. The strongest is ringed. A line with no pull either way keeps a hollow dot beside the centre, so all seven can always be seen.
 - **The result page** opens with the name of the result set very large beside the lead god's statue (both statues for a shared lead). Each god's chapter is ruled, titled and tagged in that god's colour, and each polarity bar fills in the colour of the god it leans to.
 - **Tag clouds** set a god's own images (tone `emblem`) in the display face and the god's colour.
 
@@ -101,7 +101,7 @@ A new god needs a line in `css/theme.css`, a drawing in `js/art/emblems.js`, and
 
 ### Where the pictures come from
 
-All of them are from Wikimedia Commons. The statues are public domain or CC0 photographs. The paintings are in the public domain; two of the photographs of them carry a Creative Commons licence (CC BY 3.0 and CC BY-SA 4.0) and are credited, with a link to the licence, on the credits page. `config/plates.json` holds the photographer, licence and source link for every file.
+All of them are from Wikimedia Commons. The statues are public domain or CC0 photographs. The paintings are in the public domain; one photograph of a painting carries a Creative Commons licence (CC BY 3.0) and is credited, with a link to the licence, on the credits page. Several plates are details of larger works, and their captions say so. `config/plates.json` holds the photographer, licence and source link for every file.
 
 ## How a result is worked out
 

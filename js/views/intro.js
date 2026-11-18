@@ -21,7 +21,7 @@ export function introView(ctx) {
 
   // Three tall slices stand beside the headline. In the painted edition the
   // outer two are paintings and the middle one stays marble.
-  const heroes = data.plates.hero || [];
+  const heroes = (data.plates.hero || {})[ctx.edition] || [];
   const sets = painted(ctx.edition) ? ['paintings', 'statues', 'paintings'] : ['statues', 'statues', 'statues'];
 
   return h('div', { class: 'home' },

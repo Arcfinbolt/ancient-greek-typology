@@ -179,8 +179,6 @@ main > * { animation: arrive 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
   opacity: 0.1;
   pointer-events: none;
 }
-/* A painting on an oval canvas keeps its shape. */
-.plate--oval .plate__frame { border-radius: 50%; }
 .plate__caption {
   display: flex;
   flex-direction: column;
@@ -276,29 +274,24 @@ main > * { animation: arrive 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 .wheel { display: block; width: 100%; max-width: 40rem; height: auto; margin-inline: auto; overflow: visible; }
 .wheel__ring circle { fill: none; stroke: var(--ink); stroke-width: 1; }
 .wheel__tick { stroke: var(--ink-soft); stroke-width: 0.75; opacity: 0.6; }
-.wheel__cell { fill: none; }
-.wheel__band { fill: none; stroke: var(--ink-soft); stroke-width: 0.75; stroke-dasharray: 0.5 5; stroke-linecap: round; opacity: 0.7; }
 .wheel__line { stroke: var(--rule); stroke-width: 1; }
 .wheel__hub { fill: var(--ink); }
 .wheel__sign { color: var(--ink); }
 .wheel__god { font: 400 20px var(--font-display); fill: var(--ink); }
 .wheel__pole { font: 500 9px var(--font-body); letter-spacing: 0.16em; text-transform: uppercase; fill: var(--ink-soft); }
 
-/* On a result: one point per line, in the colour of the god it leans to.
-   The strongest god's cell is filled and its point is ringed. */
-.wheel__cell.is-pulling { fill: color-mix(in srgb, var(--god) 13%, transparent); }
-.wheel__cell.is-marked { fill: var(--god); }
+/* On a result: seven dots, one on every line, each in the colour of the god
+   it leans to. The strongest is ringed. A hollow dot is a line with no pull. */
+.wheel--result .wheel__line { stroke: var(--ink-soft); opacity: 0.45; }
 .wheel__sign.is-quiet { color: var(--ink-soft); opacity: 0.5; }
-.wheel__sign.is-pulling { color: var(--god); }
-.wheel__sign.is-marked { color: var(--paper); }
+.wheel__sign.is-pulling, .wheel__sign.is-marked { color: var(--god); }
 .wheel__god.is-quiet, .wheel__pole.is-quiet { opacity: 0.5; }
 .wheel__god.is-pulling, .wheel__god.is-marked { fill: var(--god); }
 .wheel__god.is-marked { font-size: 24px; }
-.wheel__pull { stroke: var(--god); stroke-width: 1.5; stroke-linecap: round; }
-.wheel__mark { fill: var(--god); stroke: var(--paper); stroke-width: 1.5; }
-.wheel__halo { fill: none; stroke: var(--god); stroke-width: 1; }
-.wheel__point { animation: appear 0.9s ease-out both; animation-delay: calc(var(--i, 0) * 90ms + 250ms); }
-.wheel__point.is-marked .wheel__pull { stroke-width: 2.5; }
+.wheel__mark { fill: var(--god); stroke: var(--paper); stroke-width: 2; }
+.wheel__halo { fill: none; stroke: var(--god); stroke-width: 1.25; }
+.wheel__dot--rest { fill: var(--paper); stroke: var(--ink); stroke-width: 1.25; }
+.wheel__dot { animation: appear 0.8s ease-out both; animation-delay: calc(var(--i, 0) * 80ms + 200ms); }
 /* On a phone the wheel is half size: larger names, and the pole words step aside. */
 @media (max-width: 40rem) {
   .wheel__god { font-size: 27px; }
@@ -486,6 +479,10 @@ main > * { animation: arrive 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 .compass__order li.is-marked .compass__god { color: var(--god); }
 .compass__pole { font: 500 0.64rem / 1.5 var(--font-body); letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-soft); }
 .compass__order .chip { margin-left: auto; }
+/* A polarity with no pull: the same hollow dot it has on the wheel. */
+.compass__order li.is-resting { color: var(--ink-soft); }
+.compass__rest { flex: none; width: 30px; height: 30px; display: grid; place-items: center; }
+.compass__rest::before { content: ''; width: 9px; height: 9px; border: 1.25px solid var(--ink); border-radius: 50%; }
 .compass__strongest { max-width: 26rem; margin: 0; font-size: var(--text-small); color: var(--ink-soft); }
 
 /* A god's chapter: plate, Greek name and sign on the left leaf, reading on the right. */

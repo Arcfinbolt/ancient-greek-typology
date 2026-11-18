@@ -99,8 +99,8 @@ export function validateData(data, { knownSections } = {}) {
       if (!words || !words.title) say(`content plates.json: no title for ${set}.${god}.`);
     }
   }
-  for (const god of (plates && plates.hero) || []) {
-    if (!model.gods[god]) say(`config/plates.json: hero names unknown god "${god}".`);
+  for (const [edition, gods] of Object.entries((plates && plates.hero) || {})) {
+    for (const god of gods) if (!model.gods[god]) say(`config/plates.json: hero.${edition} names unknown god "${god}".`);
   }
   const editions = app.editions || [];
   if (!editions.includes(app.edition)) say('config/app.json: edition is not listed in editions.');
