@@ -74,15 +74,15 @@ export function wheel(data, { label = '', report = null } = {}) {
       // No pull either way: a hollow dot beside the centre, on this polarity's
       // own line. Neighbouring lines take opposite sides so the dots never touch.
       const [hx, hy] = at(angle(p.index % 2 ? p.index + n : p.index), REST);
-      dots.prepend(s('circle', { class: 'wheel__dot wheel__dot--rest', cx: hx, cy: hy, r: 5.5, style: { '--i': String(order) } }));
+      dots.prepend(s('circle', { class: 'wheel__dot wheel__dot--rest', cx: hx, cy: hy, r: 4.5, style: { '--i': String(order) } }));
       return;
     }
     const marked = row === strongest;
     const a = angle(row.god === p.first ? p.index : p.index + n);
     const [px, py] = at(a, NEAR + Math.min(row.strength / max, 1) * (FAR - NEAR));
     const dot = s('g', { class: `wheel__dot${marked ? ' is-marked' : ''}`, 'data-god': row.god, style: { '--i': String(order) } });
-    if (marked) dot.append(s('circle', { class: 'wheel__halo', cx: px, cy: py, r: 17.5 }));
-    dot.append(s('circle', { class: 'wheel__mark', cx: px, cy: py, r: marked ? 10.5 : 9 }));
+    if (marked) dot.append(s('circle', { class: 'wheel__halo', cx: px, cy: py, r: 13.5 }));
+    dot.append(s('circle', { class: 'wheel__mark', cx: px, cy: py, r: marked ? 8 : 6 }));
     // The strongest is drawn last so that nothing covers it.
     if (marked) dots.append(dot); else dots.prepend(dot);
   });
