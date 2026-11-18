@@ -2,7 +2,7 @@
   "app": {
     "title": "Pantheon",
     "documentTitle": "Pantheon Sorter",
-    "footer": "Pantheon Typology. A provisional sorter: the cut-offs have not been normed.",
+    "footer": "Pantheon Typology. A first version, not yet tested on a large sample.",
     "loading": "Loading the test…",
     "editionLabel": "Plates",
     "editions": { "marble": "Marble", "paint": "Marble and paint" }
@@ -25,35 +25,35 @@
     },
     "modelKicker": "The model",
     "modelTitle": "Seven questions, two gods to each",
-    "modelIntro": "Each polarity asks one question and sets two gods at its ends. Nobody is all one god. The test finds where you stand on each line, then names the god you lead with and the one who stands across from it.",
+    "modelIntro": "Each line on the wheel is a question with a god at either end. Nobody is all one god. The test places you on all seven lines, then names the god you lean to hardest and the one facing it across the wheel, whom you have probably been neglecting.",
     "galleryKicker": "The pantheon",
     "headline": "Find the god you lead with, and the one you neglect.",
-    "lede": "Fourteen Greek gods stand at the two ends of seven polarities, such as Athena’s composure against Poseidon’s surge. Rate {count} statements and see where you stand on each.",
+    "lede": "The Greeks had a god for most ways of being a person. This test sets fourteen of them against each other in pairs. You rate {count} statements, and it tells you which god of each pair you take after.",
     "start": "Start the test",
     "resume": "Continue the test",
     "seeResult": "See your result",
-    "wheelCaption": "Each line joins two gods who pull in opposite directions.",
+    "wheelCaption": "Each line joins two gods who want opposite things.",
     "friezeTitle": "The fourteen",
     "friezeLink": "Meet the fourteen",
     "facts": [
-      { "term": "About five minutes", "detail": "{count} statements on {pages} short pages." },
-      { "term": "Stays in your browser", "detail": "Nothing you answer is sent anywhere." },
-      { "term": "Provisional", "detail": "The cut-offs have not been normed yet, so read the result as a first sketch." }
+      { "term": "About five minutes", "detail": "{count} statements over {pages} short pages." },
+      { "term": "Stays in your browser", "detail": "Your answers are never sent anywhere." },
+      { "term": "A first version", "detail": "Not yet tested on a large sample. Treat the result as a sketch." }
     ]
   },
 
   "quiz": {
     "instruction": "Compared with most people you know, how true is each statement of you?",
-    "scaleHelp": "The five circles run from far less true of you, on the left, to far more, on the right. The middle one means about the same.",
+    "scaleHelp": "Left is far less true of you than of most people you know. Right is far more. The middle circle means about the same.",
     "scale": ["Far less", "Less", "About the same", "More", "Far more"],
     "scaleSpoken": ["far less true of me", "less true of me", "about the same", "more true of me", "far more true of me"],
     "page": "Page {page} of {pages}",
     "progress": "{answered} of {count} answered",
     "back": "Back",
-    "next": "Next page",
+    "next": "Next",
     "finish": "See my result",
-    "missingOne": "1 statement on this page still needs an answer.",
-    "missingMany": "{n} statements on this page still need an answer."
+    "missingOne": "One statement on this page has no answer yet.",
+    "missingMany": "{n} statements on this page have no answer yet."
   },
 
   "result": {
@@ -69,38 +69,38 @@
     "leadTitle": "{god} leads",
     "secondTitle": "{god} comes second",
     "neglectedTitle": "{god} is the god you neglect",
-    "neglectedRule": "The Greek rule is that every god is owed honour. The one opposite your lead is the one you are most likely to skip.",
+    "neglectedRule": "The Greeks held that every god is owed something, and that the one to fear is the one you leave out. Hippolytus gave everything to Artemis and would not so much as greet Aphrodite. Euripides wrote the play about how that went.",
     "epithet": "{god}, {epithet}",
     "symbols": "Emblems: {symbols}",
     "wheelKicker": "At a glance",
     "wheelTitle": "Your wheel",
     "leadLabel": "Your lead",
     "secondLabel": "Your second",
-    "neglectedLabel": "Owed honour",
+    "neglectedLabel": "The god you owe",
     "polaritiesKicker": "In full",
     "wheelIntro": "Seven dots, one on every line. The further a dot sits from the centre, the stronger the pull toward the god at that end. A hollow dot at the centre is a line with no pull either way.",
     "wheelRest": "{first} · {second}",
     "wheelStrongest": "The ringed dot is your strongest pull: {god}.",
-    "wheelStill": "All seven dots rest at the centre. No god pulls at all.",
+    "wheelStill": "All seven dots sit at the centre. No god has any pull on you.",
     "wheelOrder": "Your pulls, strongest first",
     "wheelSpoken": "Your seven dots on the wheel. {reading}",
-    "polaritiesTitle": "Your seven polarities",
-    "polaritiesIntro": "A bar that reaches further from the centre means a stronger pull toward that god.",
+    "polaritiesTitle": "All seven pairs",
+    "polaritiesIntro": "The longer the bar, the stronger the pull toward the god on that side.",
     "leaningsTitle": "Your leanings",
     "describedAbove": "Described above.",
-    "balancedNote": "Balanced: neither god pulls clearly.",
+    "balancedNote": "Balanced. Neither god has much of a hold here.",
     "barLabel": "{band} {god}",
     "barBalanced": "balanced",
     "barSpoken": "{first} against {second}: {reading}",
-    "methodTitle": "How to read this",
+    "methodTitle": "How far to trust this",
     "retake": "Retake the test",
     "takeYourself": "Take the test yourself",
     "retakeConfirm": "Clear my answers and start again",
     "copy": "Copy a link to this result",
     "copied": "Link copied",
     "copyManual": "Copy this link:",
-    "sharedNotice": "You are looking at a shared result. Your own answers are untouched.",
-    "incomplete": "Answer every statement to see a result."
+    "sharedNotice": "This result was opened from a link. Your own answers are untouched.",
+    "incomplete": "There is no result until every statement has an answer."
   },
 
   "cloud": {
@@ -111,7 +111,7 @@
   "gods": {
     "kicker": "The pantheon",
     "title": "The fourteen gods",
-    "intro": "Seven polarities with two gods each. In every word-portrait, larger words matter more to the god’s character.",
+    "intro": "Seven pairs of opposites. In each cloud of words, the larger a word is set, the more it belongs to the god.",
     "gift": "Gift",
     "wrath": "Wrath",
     "read": "Where to read it",
@@ -122,7 +122,7 @@
   "credits": {
     "kicker": "Sources",
     "title": "The plates",
-    "intro": "Every statue and painting on this site, with the collection that holds it, the source of the photograph and its licence. The statues are shown in black and white. All pictures are cropped.",
+    "intro": "Every statue and painting on this site, with the collection that holds it, where the photograph came from and its licence. The statues are shown in black and white, and all the pictures are cropped.",
     "sets": { "statues": "Statues", "paintings": "Paintings" },
     "source": "Source file"
   }

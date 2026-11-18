@@ -2,113 +2,113 @@
   "zeus": {
     "name": "Zeus", "greek": "Ζεύς", "pole": "Command",
     "epithet": "the cloud-gatherer", "symbols": "Thunderbolt, eagle, oak",
-    "does": "Takes charge, sets terms, assigns roles.",
-    "gift": "Decision, order, protection of those under him.",
-    "wrath": "Domination, entitlement, retaliation.",
+    "does": "Decides. The other gods may argue, and do, but the nod is his.",
+    "gift": "A decision when one is needed, and cover for everyone beneath him.",
+    "wrath": "Treats disagreement as rebellion, and pays it back.",
     "read": "Iliad 8.18–27; Theogony 881–885"
   },
   "hades": {
     "name": "Hades", "greek": "Ἅιδης", "pole": "Reserve",
     "epithet": "host of many", "symbols": "Bident, helm of darkness, cypress",
-    "does": "Keeps his own realm and counsel, unseen.",
-    "gift": "Depth, discretion, freedom from applause.",
-    "wrath": "Withdrawal, secrecy, coldness nobody can reach.",
+    "does": "Rules the dead, rarely leaves, and is not seen when he does.",
+    "gift": "Depth, discretion, and no appetite for applause.",
+    "wrath": "Withdraws past reach and calls it privacy.",
     "read": "Iliad 9.158–159; Plato, Cratylus 403a–404b"
   },
   "hermes": {
     "name": "Hermes", "greek": "Ἑρμῆς", "pole": "Roaming",
     "epithet": "the guide", "symbols": "Herald’s staff, winged sandals, the wayside herm",
-    "does": "Seeks the new route, idea or trade.",
-    "gift": "Invention, quick learning, joining separate worlds.",
-    "wrath": "Restlessness, glibness, deceit.",
+    "does": "Carries messages, crosses borders, guides the dead down, and steals when it amuses him.",
+    "gift": "Quick learning, new routes, and introductions between worlds that had not met.",
+    "wrath": "Restless, glib, and loose with the truth.",
     "read": "Homeric Hymn 4; Iliad 24.334–335"
   },
   "hestia": {
     "name": "Hestia", "greek": "Ἑστία", "pole": "Dwelling",
     "epithet": "first and last", "symbols": "Hearth fire, round altar, the first libation",
-    "does": "Keeps the centre, the routine, the fire.",
-    "gift": "Constancy, calm, continuity.",
-    "wrath": "Inertia, insularity, refusal of change.",
+    "does": "Keeps the fire and stays with it. Almost no stories are told of her, which is the point.",
+    "gift": "Constancy. Things are where you left them, and so is she.",
+    "wrath": "Stays put past the point of sense.",
     "read": "Homeric Hymn 5.21–32; Plato, Phaedrus 247a"
   },
   "apollo": {
     "name": "Apollo", "greek": "Ἀπόλλων", "pole": "Measure",
     "epithet": "the far-shooter", "symbols": "Lyre, laurel, bow",
-    "does": "Plans, orders, holds to a standard.",
-    "gift": "Mastery, clarity, foresight.",
-    "wrath": "Rigidity, coldness, punishment of flaws.",
+    "does": "Sets the measure: the tuned string, the true aim, the oracle that is never wrong and seldom clear.",
+    "gift": "Mastery, clarity, and the long view.",
+    "wrath": "Coldness, and no mercy for a flaw.",
     "read": "Homeric Hymn 3.131–132; Plato, Protagoras 343a–b"
   },
   "dionysus": {
     "name": "Dionysus", "greek": "Διόνυσος", "pole": "Release",
     "epithet": "the loosener", "symbols": "Vine, thyrsus, panther",
-    "does": "Follows the moment into full immersion.",
-    "gift": "Aliveness, spontaneity, shared joy.",
-    "wrath": "Excess, chaos, savagery.",
+    "does": "Arrives from elsewhere with wine and a loud following, and loosens whatever was tied.",
+    "gift": "Aliveness, and joy that spreads.",
+    "wrath": "Excess, then wreckage.",
     "read": "Euripides, Bacchae; Plutarch, Antony 24"
   },
   "aphrodite": {
     "name": "Aphrodite", "greek": "Ἀφροδίτη", "pole": "Accord",
     "epithet": "the laughter-loving", "symbols": "Scallop shell, dove, myrtle",
-    "does": "Draws people together, pleases, persuades.",
-    "gift": "Rapport, grace, peacemaking.",
-    "wrath": "Flattery, vanity, flight from conflict.",
+    "does": "Makes people want each other, and makes them agree.",
+    "gift": "Ease between people. Quarrels end when she arrives.",
+    "wrath": "Flattery, vanity, and flight from any fight.",
     "read": "Iliad 14.214–217; Theogony 203–206"
   },
   "ares": {
     "name": "Ares", "greek": "Ἄρης", "pole": "Contest",
     "epithet": "bane of mortals", "symbols": "Spear, shield, crested helmet",
-    "does": "Confronts, competes, strikes.",
-    "gift": "Courage, candour, force in defence.",
-    "wrath": "Aggression, cruelty, strife for its own sake.",
+    "does": "Fights. Homer’s gods do not like him, and send for him anyway.",
+    "gift": "Courage, plain speech, and force when it is needed.",
+    "wrath": "Strife for its own sake.",
     "read": "Iliad 5.888–891"
   },
   "athena": {
     "name": "Athena", "greek": "Ἀθηνᾶ", "pole": "Composure",
     "epithet": "the grey-eyed", "symbols": "Owl, olive, aegis",
-    "does": "Stays cool and thinks ahead.",
-    "gift": "Judgement under pressure, strategy, self-command.",
-    "wrath": "Coldness, contempt, pride in cleverness.",
+    "does": "Thinks first. She is the god the heroes get when they need a plan.",
+    "gift": "A clear head under pressure, and a plan.",
+    "wrath": "Contempt for anyone slower or softer.",
     "read": "Iliad 1.193–218; Odyssey 13.296–299"
   },
   "poseidon": {
     "name": "Poseidon", "greek": "Ποσειδῶν", "pole": "Surge",
     "epithet": "the earth-shaker", "symbols": "Trident, horse, dolphin",
-    "does": "Feels at full force and shows it.",
-    "gift": "Emotional power, passion, sensitivity as radar.",
-    "wrath": "Rage, grudge, moods that flood the room.",
+    "does": "Holds the sea, shakes the land, and takes most things personally.",
+    "gift": "Feeling at full strength, and an instinct for what is wrong in a room.",
+    "wrath": "Rage, grudges, and moods that flood the house.",
     "read": "Odyssey 5.282–296; Apollodorus 3.14.1"
   },
   "hera": {
     "name": "Hera", "greek": "Ἥρα", "pole": "Bond",
     "epithet": "queen and keeper of vows", "symbols": "Peacock, diadem, pomegranate",
-    "does": "Commits, belongs, guards the house.",
-    "gift": "Fidelity, dependability, institutions that last.",
-    "wrath": "Jealousy, possessiveness, vendetta.",
+    "does": "Keeps the marriage and the household of the gods, and keeps count of every offence against them.",
+    "gift": "Fidelity. What she builds lasts.",
+    "wrath": "Jealousy, and a long memory for betrayal.",
     "read": "Iliad 1.536–569; Pausanias 8.22.2"
   },
   "artemis": {
     "name": "Artemis", "greek": "Ἄρτεμις", "pole": "Freedom",
     "epithet": "mistress of the wild", "symbols": "Bow, crescent moon, deer",
-    "does": "Keeps her own ground and her own rules.",
-    "gift": "Independence, focus, defence of the unprotected.",
-    "wrath": "Aloofness, merciless boundaries, isolation.",
+    "does": "Hunts the high country with her own company and answers to no one.",
+    "gift": "Independence, true aim, and protection for the defenceless.",
+    "wrath": "Aloofness, and no mercy at the boundary.",
     "read": "Callimachus, Hymn 3.6–25; Odyssey 6.102–109"
   },
   "demeter": {
     "name": "Demeter", "greek": "Δημήτηρ", "pole": "Tending",
     "epithet": "bringer of the seasons", "symbols": "Wheat ear, torch, poppy",
-    "does": "Feeds, teaches, raises.",
-    "gift": "Nurture, patience, the growth of others.",
-    "wrath": "Smothering, withholding, collapse at loss.",
+    "does": "Makes the grain grow, and once stopped it.",
+    "gift": "Nourishment, patience, and other people’s growth.",
+    "wrath": "Smothers, or withholds, and comes apart at a loss.",
     "read": "Homeric Hymn 2.302–313 and 470–482"
   },
   "hephaestus": {
     "name": "Hephaestus", "greek": "Ἥφαιστος", "pole": "Making",
     "epithet": "the famed craftsman", "symbols": "Hammer, anvil, tongs",
-    "does": "Builds, repairs, perfects objects.",
-    "gift": "Craft, invention, perseverance.",
-    "wrath": "Bitterness, hiding in work, revenge by device.",
+    "does": "Makes things: armour, thrones, traps, and girls of gold who can speak.",
+    "gift": "Craft, invention, and the patience to finish.",
+    "wrath": "Bitterness, and revenge by contraption.",
     "read": "Iliad 18.369–421; Odyssey 8.266–366"
   }
 }

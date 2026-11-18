@@ -1,5 +1,5 @@
 {
-  "rule":   { "question": "Who decides, and in whose sight?", "anchor": "Assertiveness" },
+  "rule":   { "question": "In charge or out of sight?",    "anchor": "Assertiveness" },
   "range":  { "question": "New or known?",                    "anchor": "Openness to experience" },
   "form":   { "question": "Plan or moment?",                  "anchor": "Conscientiousness" },
   "accord": { "question": "Smooth or sharp?",                 "anchor": "Agreeableness" },
