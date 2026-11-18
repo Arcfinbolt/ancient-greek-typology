@@ -8,7 +8,7 @@
   "orderSeed": 14,
   "itemsPerPage": 7,
 
-  "resultSections": ["headline", "lead", "second", "neglected", "polarities", "method", "actions"],
+  "resultSections": ["headline", "wheel", "lead", "second", "neglected", "polarities", "method", "actions"],
 
   "features": {
     "saveProgress": true,

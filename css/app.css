@@ -21,7 +21,7 @@ p { margin: 0 0 1em; }
 
 h1, h2, h3 { font-family: var(--font-display); font-weight: 400; text-wrap: balance; }
 
-:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 [tabindex='-1']:focus { outline: none; }
 
 .visually-hidden {
@@ -42,8 +42,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 400; text-wrap: bala
   align-items: baseline;
   justify-content: space-between;
   gap: 0.25rem 2rem;
-  padding-block: 1.1rem 1rem;
-  border-bottom: 1px solid var(--rule);
+  padding-block: 1.1rem 0.9rem;
 }
 .brand { font: 400 1.5rem / 1 var(--font-display); text-decoration: none; }
 .nav__links { display: flex; flex-wrap: wrap; gap: 0.25rem 1.75rem; font-size: 0.95rem; }
@@ -63,6 +62,40 @@ main { flex: 1; padding-block: clamp(2rem, 6vw, 4.5rem); }
 .notice h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.15; margin: 0 0 1rem; }
 .notice p { max-width: var(--measure); }
 
+/* ---------- Ornament ---------- */
+
+/* The meander (Greek key). The tile is a mask, so the band takes any colour:
+   terracotta by default, the god's colour inside anything with data-god. */
+.meander {
+  height: 14px;
+  background: var(--god);
+  /* `round` fits a whole number of keys, so the band never ends mid-key. */
+  -webkit-mask: url('../img/meander.svg') round left center / 16px 14px;
+  mask: url('../img/meander.svg') round left center / 16px 14px;
+}
+.meander--flip { transform: scaleY(-1); }
+.site-head .meander { opacity: 0.85; }
+
+/* A god's emblem on a disc of the god's colour. */
+.emblem { display: block; flex: none; color: var(--paper); overflow: visible; }
+.emblem__disc { fill: var(--god); }
+.emblem__ring { fill: none; stroke: var(--paper); stroke-width: 0.8; opacity: 0.55; }
+.emblem__laurel { fill: var(--god); }
+.emblem__stem { fill: none; stroke: var(--god); stroke-width: 1.2; stroke-linecap: round; }
+.emblem__halo { fill: none; stroke: var(--god); stroke-width: 2; }
+/* Hollow: an outline only, for a god who is not pulling or is neglected. */
+.emblem--hollow { color: var(--god); }
+.emblem--hollow .emblem__disc { fill: var(--paper); stroke: var(--god); stroke-width: 1.5; }
+.emblem--hollow .emblem__ring { display: none; }
+
+/* The temple front: stone in ink, the sun behind it in terracotta. */
+.temple { display: block; width: 100%; height: auto; }
+.temple__sun { fill: var(--accent); opacity: 0.9; }
+.temple__stone { fill: var(--ink); }
+.temple__cut { fill: none; stroke: var(--paper); stroke-width: 1.4; stroke-linecap: round; }
+.temple__cut path:first-child { fill: var(--paper); stroke: none; opacity: 0.14; }
+.temple__ground { stroke: var(--ink); stroke-width: 1.5; }
+
 /* ---------- Shared pieces ---------- */
 
 .button {
@@ -78,7 +111,7 @@ main { flex: 1; padding-block: clamp(2rem, 6vw, 4.5rem); }
   cursor: pointer;
   transition: background-color 0.12s, border-color 0.12s, color 0.12s;
 }
-.button:hover { background: var(--green); border-color: var(--green); }
+.button:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
 .button--quiet { background: transparent; color: var(--ink); border-color: var(--rule); }
 .button--quiet:hover { background: transparent; border-color: var(--ink); }
 
@@ -94,6 +127,9 @@ main { flex: 1; padding-block: clamp(2rem, 6vw, 4.5rem); }
 .chip--lean { border-style: dashed; }
 .chip--clear { border-color: var(--ink); }
 .chip--strong { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+/* Beside a god, the chip takes the god's colour. */
+[data-god] .chip--clear { border-color: var(--god); color: var(--god); }
+[data-god] .chip--strong { background: var(--god); border-color: var(--god); }
 
 .reading { max-width: var(--measure); }
 .reading--wide { max-width: 40rem; font-size: var(--text-large); line-height: 1.5; }
@@ -114,30 +150,67 @@ main { flex: 1; padding-block: clamp(2rem, 6vw, 4.5rem); }
 .intro__lede { max-width: 32rem; font-size: var(--text-large); line-height: 1.5; margin-bottom: 1.75rem; }
 .intro__action { margin: 0; }
 
+.intro__text .temple { width: min(11rem, 50%); margin: 0 0 1.5rem; }
 .intro__wheel { margin: 0; }
 .intro__wheel figcaption { font-size: var(--text-small); color: var(--ink-soft); text-align: center; }
 
-.wheel { display: block; width: 100%; max-width: 38rem; height: auto; margin-inline: auto; }
-.wheel__rim { fill: none; stroke: var(--rule); }
-.wheel__line { stroke: var(--ink-soft); stroke-width: 1; }
-.wheel__dot { fill: var(--ink); }
+/* The wheel, drawn like the inside of a painted cup: a clay rim with a
+   meander, a pale field in the middle, the gods' discs set round the edge. */
+.wheel { display: block; width: 100%; max-width: 40rem; height: auto; margin-inline: auto; }
+.wheel__plate { fill: var(--paper-deep); }
+.wheel__rim { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.wheel__field { fill: var(--paper); stroke: var(--ink); stroke-width: 1; }
+.meander-ring { fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linecap: square; }
+.wheel__line { stroke: var(--rule); stroke-width: 1.25; }
+.wheel__hub { fill: var(--ink-soft); }
 .wheel__god { font: 400 21px var(--font-display); fill: var(--ink); }
 .wheel__pole { font: 400 12.5px var(--font-body); fill: var(--ink-soft); }
+
+/* On a result: one point per line, in the colour of the god it leans to. */
+.wheel--result .wheel__line { stroke-dasharray: 2 5; stroke: var(--ink-soft); stroke-width: 1; }
+.wheel__pull { stroke: var(--god); stroke-width: 3; stroke-linecap: round; opacity: 0.55; }
+.wheel__mark { fill: var(--god); stroke: var(--paper); stroke-width: 2; }
+.wheel__mark--still { fill: var(--paper); stroke: var(--ink-soft); stroke-width: 1.5; }
+.wheel__halo { fill: none; stroke: var(--god); stroke-width: 2; }
+.wheel__point.is-marked .wheel__pull { stroke-width: 5; opacity: 0.9; }
+.wheel__god.is-quiet, .wheel__pole.is-quiet { opacity: 0.55; }
+.wheel__god.is-pulling, .wheel__god.is-marked { fill: var(--god); }
+.wheel__god.is-marked { font-size: 25px; }
+
+/* The frieze: all fourteen in a row between two meanders. */
+.frieze { display: grid; gap: 1.25rem; }
+.frieze__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1.5rem; }
+.frieze__title { font-size: 1.5rem; line-height: 1.2; margin: 0; }
+.frieze__link { font-size: 0.95rem; color: var(--ink-soft); }
+.frieze__link:hover { color: var(--ink); }
+.frieze__gods {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr));
+  gap: 1.25rem 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+.frieze__gods li { display: grid; justify-items: center; gap: 0.1rem; text-align: center; }
+.frieze__gods .emblem { margin-bottom: 0.4rem; }
+.frieze__name { font: 400 1.05rem / 1.2 var(--font-display); }
+.frieze__pole { font-size: 0.75rem; color: var(--ink-soft); }
+@media (min-width: 64rem) {
+  .frieze__gods { grid-template-columns: repeat(14, minmax(0, 1fr)); }
+}
 
 .facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   gap: 1.25rem 2.5rem;
   margin: 0;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
 }
 .facts dt { font-weight: 600; }
 .facts dd { margin: 0; color: var(--ink-soft); }
 
 @media (min-width: 60rem) {
   .intro { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
-  .facts { grid-column: 1 / -1; }
+  .frieze, .facts { grid-column: 1 / -1; }
 }
 
 /* ---------- The test ---------- */
@@ -162,11 +235,11 @@ main { flex: 1; padding-block: clamp(2rem, 6vw, 4.5rem); }
   overflow: hidden;
   appearance: none;
   background: var(--paper-deep);
-  color: var(--green);
+  color: var(--accent);
 }
 .quiz__bar::-webkit-progress-bar { background: var(--paper-deep); }
-.quiz__bar::-webkit-progress-value { background: var(--green); }
-.quiz__bar::-moz-progress-bar { background: var(--green); }
+.quiz__bar::-webkit-progress-value { background: var(--accent); }
+.quiz__bar::-moz-progress-bar { background: var(--accent); }
 
 .items { list-style: none; margin: 1.5rem 0 0; padding: 0; border-top: 1px solid var(--rule); }
 .item {
@@ -202,11 +275,11 @@ main { flex: 1; padding-block: clamp(2rem, 6vw, 4.5rem); }
 }
 .scale__option:hover .scale__dot { border-color: var(--ink); }
 .scale__option input:checked + .scale__dot {
-  background: var(--green);
-  border-color: var(--green);
+  background: var(--accent);
+  border-color: var(--accent);
   box-shadow: inset 0 0 0 4px var(--paper);
 }
-.scale__option input:focus-visible + .scale__dot { outline: 2px solid var(--green); outline-offset: 3px; }
+.scale__option input:focus-visible + .scale__dot { outline: 2px solid var(--accent); outline-offset: 3px; }
 .scale__caption { font-size: 0.75rem; line-height: 1.2; color: var(--ink-soft); white-space: nowrap; }
 
 @media (min-width: 52rem) {
@@ -228,36 +301,81 @@ main { flex: 1; padding-block: clamp(2rem, 6vw, 4.5rem); }
 
 /* ---------- The result ---------- */
 
-.verdict { padding-bottom: clamp(2rem, 5vw, 3.5rem); }
+/* The header takes the lead god's colour: a wash behind, the meander above,
+   the wreathed emblem beside the name. */
+.verdict {
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  background: var(--paper-deep);
+  border-bottom: 2px solid var(--god);
+}
+.verdict__body {
+  display: grid;
+  gap: 1.5rem 3rem;
+  align-items: center;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1.1rem, 4vw, 3rem) clamp(1.75rem, 4vw, 3rem);
+}
+.verdict__signs { display: flex; align-items: flex-end; justify-content: center; order: -1; }
+.verdict__signs .emblem--wreath { width: clamp(7.5rem, 30vw, 11rem); height: auto; }
+.verdict__signs .emblem + .emblem { margin: 0 0 0.6rem -1.4rem; }
+.verdict__signs .temple { width: min(100%, 20rem); }
+.verdict__text > :last-child { margin-bottom: 0; }
+@media (min-width: 52rem) {
+  .verdict__body { grid-template-columns: minmax(0, 1fr) auto; }
+  .verdict__signs { order: 0; }
+}
 .verdict__notice {
   display: inline-block;
   margin-bottom: 1.5rem;
   padding: 0.5rem 0.9rem;
-  background: var(--paper-deep);
+  background: var(--paper);
   border-radius: 4px;
   font-size: var(--text-small);
 }
 .verdict__kicker { margin: 0; color: var(--ink-soft); }
 .verdict__code {
-  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-size: clamp(2.75rem, 8vw, 5.5rem);
   line-height: 1;
   letter-spacing: -0.015em;
   margin: 0.35rem 0 0.75rem;
   overflow-wrap: anywhere;
 }
-.verdict__tier { margin-bottom: 1.5rem; color: var(--green); font-weight: 600; }
+.verdict__tier { margin-bottom: 1.5rem; color: var(--god); font-weight: 600; letter-spacing: 0.01em; }
+
+/* The wheel with this result's seven points on it. */
+.compass { display: grid; gap: 2rem 4rem; align-items: center; padding-bottom: clamp(2rem, 5vw, 3.25rem); }
+@media (min-width: 56rem) {
+  .compass { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+}
+.compass__wheel { margin: 0; }
+.compass__strongest { max-width: var(--measure); font-weight: 600; color: var(--god); }
+.compass__order-title { margin: 1.75rem 0 0.75rem; font: 600 var(--text-small) / 1.4 var(--font-body); color: var(--ink-soft); }
+.compass__order { list-style: none; display: grid; gap: 0.5rem; margin: 0; padding: 0; }
+.compass__order li { display: flex; align-items: center; gap: 0.7rem; }
+.compass__god { font: 400 1.25rem / 1.2 var(--font-display); }
+.compass__order li.is-marked .compass__god { color: var(--god); }
+.compass__pole { font-size: var(--text-small); color: var(--ink-soft); }
+.compass__order .chip { margin-left: auto; }
+@media (min-width: 30rem) {
+  .compass__order { max-width: 24rem; }
+}
 
 .leaf {
   display: grid;
   gap: 1.5rem 4rem;
   padding-block: clamp(2rem, 5vw, 3.25rem);
-  border-top: 1px solid var(--rule);
+  border-top: 2px solid var(--god);
 }
 @media (min-width: 56rem) {
   .leaf { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
 }
-.leaf__greek { font: 400 clamp(2rem, 4vw, 2.75rem) / 1.1 var(--font-display); color: var(--green); margin: 0 0 1.1rem; }
-.leaf--neglected .leaf__greek { color: var(--ink-soft); }
+.leaf__sign { display: flex; align-items: center; gap: 1.1rem; margin-bottom: 1.5rem; }
+.leaf--lead .leaf__sign { gap: 0.9rem; margin-left: -0.5rem; }
+.leaf__greek { font: 400 clamp(2rem, 4vw, 2.75rem) / 1.1 var(--font-display); color: var(--god); margin: 0; }
+.leaf__epithet { margin: 0.3rem 0 0; font: italic 400 1rem / 1.3 var(--font-body); color: var(--ink-soft); }
+.leaf__symbols { max-width: var(--measure); margin: 1.25rem 0 0; padding-top: 0.9rem; border-top: 1px solid var(--rule); font-size: var(--text-small); color: var(--ink-soft); }
+.leaf--neglected { border-top-style: dashed; }
+.leaf__title { color: var(--ink); }
+.leaf__pole { color: var(--god); font-weight: 600; }
 .leaf__title { font-size: clamp(1.75rem, 3vw, 2.25rem); line-height: 1.15; margin: 0 0 0.5rem; }
 .leaf__meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; color: var(--ink-soft); }
 
@@ -281,7 +399,10 @@ main { flex: 1; padding-block: clamp(2rem, 6vw, 4.5rem); }
 .cloud__word--w4 { font: 400 1.75em / 1.1 var(--font-display); }
 .cloud__word--w5 { font: 400 2.5em / 1.05 var(--font-display); }
 .cloud__word--wrath { color: var(--red); }
-.cloud__word--emblem { color: var(--green); }
+/* Emblems are the god's own images, so they are set in the god's colour and face. */
+.cloud__word--emblem { color: var(--god); font-family: var(--font-display); font-size: 1.2em; }
+.cloud__word--emblem.cloud__word--w3 { font-size: 1.5em; font-weight: 400; }
+.cloud__word--emblem.cloud__word--w1 { font-size: 1.05em; }
 
 .cloud__key { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin: 1.1rem 0 0; font-size: 0.8125rem; color: var(--ink-soft); }
 .cloud__key-item::before {
@@ -294,7 +415,7 @@ main { flex: 1; padding-block: clamp(2rem, 6vw, 4.5rem); }
   background: var(--ink);
 }
 .cloud__key-item--wrath::before { background: var(--red); }
-.cloud__key-item--emblem::before { background: var(--green); }
+.cloud__key-item--emblem::before { background: var(--god); }
 
 /* The seven polarities. */
 .profile, .method { padding-block: clamp(2rem, 5vw, 3.25rem); border-top: 1px solid var(--rule); }
@@ -305,28 +426,35 @@ main { flex: 1; padding-block: clamp(2rem, 6vw, 4.5rem); }
 
 .pbar {
   display: grid;
-  grid-template-columns: 8.5rem minmax(6rem, 1fr) 8.5rem 8.5rem;
+  grid-template-columns: 10.5rem minmax(6rem, 1fr) 10.5rem 7.5rem;
   grid-template-areas: 'first track second reading';
   align-items: center;
   gap: 0.4rem 1rem;
 }
-.pbar__end { display: flex; flex-direction: column; line-height: 1.2; color: var(--ink-soft); }
-.pbar__end--first { grid-area: first; align-items: flex-end; text-align: right; }
+/* Each end is a god: emblem, name and pole word, in that god's colour when it leads. */
+.pbar__end { display: flex; align-items: center; gap: 0.6rem; line-height: 1.2; color: var(--ink-soft); }
+.pbar__end--first { grid-area: first; flex-direction: row-reverse; text-align: right; }
 .pbar__end--second { grid-area: second; }
-.pbar__end.is-leading { color: var(--ink); }
+.pbar__names { display: flex; flex-direction: column; }
+.pbar__end.is-leading { color: var(--god); }
 .pbar__god { font: 400 1.25rem / 1.2 var(--font-display); }
 .pbar__pole { font-size: 0.75rem; color: var(--ink-soft); }
-.pbar__track { grid-area: track; position: relative; height: 12px; background: var(--paper-deep); }
-.pbar__tick { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--rule); }
+/* Each half of the track is tinted with the god it leads to. */
+.pbar__track { grid-area: track; position: relative; height: 14px; }
+.pbar__half { position: absolute; top: 0; bottom: 0; width: 50%; background: color-mix(in srgb, var(--god) 16%, var(--paper-deep)); }
+.pbar__half--first { left: 0; border-radius: 7px 0 0 7px; }
+.pbar__half--second { right: 0; border-radius: 0 7px 7px 0; }
+.pbar__tick { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--paper); opacity: 0.8; }
 .pbar__centre { position: absolute; left: 50%; top: -5px; bottom: -5px; width: 1px; background: var(--ink-soft); }
-.pbar__fill { position: absolute; top: 0; bottom: 0; background: var(--green); }
-.pbar__fill--first { right: 50%; border-radius: 4px 0 0 4px; }
-.pbar__fill--second { left: 50%; border-radius: 0 4px 4px 0; }
-.pbar__reading { grid-area: reading; font-size: var(--text-small); }
+.pbar__fill { position: absolute; top: 0; bottom: 0; background: var(--god); }
+.pbar__fill--first { right: 50%; border-radius: 7px 0 0 7px; }
+.pbar__fill--second { left: 50%; border-radius: 0 7px 7px 0; }
+.pbar__reading { grid-area: reading; font-size: var(--text-small); color: var(--god); font-weight: 500; }
+.pbar__reading:not([data-god]) { color: var(--ink-soft); font-weight: 400; }
 
 /* On wide screens the question and the reading line up with the start of the track. */
 @media (min-width: 46.01rem) {
-  .profile__question, .profile__aside, .profile__row .reading { margin-left: 9.5rem; }
+  .profile__question, .profile__aside, .profile__row .reading { margin-left: 11.5rem; }
 }
 
 @media (max-width: 46rem) {
@@ -334,8 +462,8 @@ main { flex: 1; padding-block: clamp(2rem, 6vw, 4.5rem); }
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 'first second' 'track track' 'reading reading';
   }
-  .pbar__end--first { align-items: flex-start; text-align: left; }
-  .pbar__end--second { align-items: flex-end; text-align: right; }
+  .pbar__end--first { flex-direction: row; text-align: left; }
+  .pbar__end--second { flex-direction: row-reverse; text-align: right; }
 }
 
 .actions {
@@ -360,10 +488,16 @@ main { flex: 1; padding-block: clamp(2rem, 6vw, 4.5rem); }
 
 /* ---------- The fourteen gods ---------- */
 
-.gods__head { padding-bottom: 2rem; }
+.gods__head { display: grid; gap: 1.5rem 3rem; align-items: end; padding-bottom: 2.5rem; }
+.gods__head .temple { width: min(100%, 17rem); }
+@media (min-width: 52rem) {
+  .gods__head { grid-template-columns: minmax(0, 1fr) auto; }
+  .gods__head .temple { width: 19rem; }
+}
 .gods__head h1 { font-size: clamp(2.4rem, 5vw, 3.5rem); line-height: 1.08; margin: 0 0 1rem; }
 
-.pair { padding-block: 2.5rem; border-top: 1px solid var(--rule); }
+.pair { padding-bottom: 3rem; }
+.pair > .meander { margin-bottom: 2rem; opacity: 0.7; }
 .pair__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 1.5rem; margin-bottom: 2rem; }
 .pair__question { font-size: 1.75rem; line-height: 1.2; margin: 0; }
 .pair__names { margin: 0; color: var(--ink-soft); }
@@ -372,9 +506,12 @@ main { flex: 1; padding-block: clamp(2rem, 6vw, 4.5rem); }
   .pair__gods { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
 
-.god__greek { font: 400 1.5rem / 1.2 var(--font-display); color: var(--green); margin: 0; }
-.god__name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 0.75rem; font-size: 2.25rem; line-height: 1.15; margin: 0 0 0.35rem; }
-.god__pole { font: 400 0.95rem var(--font-body); color: var(--ink-soft); }
+.god { padding-top: 1.25rem; border-top: 2px solid var(--god); }
+.god__head { display: flex; align-items: center; gap: 1.1rem; margin-bottom: 1rem; }
+.god__greek { font: 400 1.4rem / 1.2 var(--font-display); color: var(--god); margin: 0; }
+.god__name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 0.75rem; font-size: 2.25rem; line-height: 1.15; margin: 0; }
+.god__pole { font: 600 0.95rem var(--font-body); color: var(--god); }
+.god__epithet { margin: 0.1rem 0 0; font: italic 400 0.95rem / 1.3 var(--font-body); color: var(--ink-soft); }
 .god__does { margin-bottom: 1.25rem; }
 .god__facts { display: grid; gap: 0.4rem; margin: 1.5rem 0 0; font-size: var(--text-small); }
 .god__facts div { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1rem; }

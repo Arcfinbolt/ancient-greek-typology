@@ -1,6 +1,7 @@
 {
   "zeus": {
     "name": "Zeus", "greek": "Ζεύς", "pole": "Command",
+    "epithet": "the cloud-gatherer", "symbols": "Thunderbolt, eagle, oak",
     "does": "Takes charge, sets terms, assigns roles.",
     "gift": "Decision, order, protection of those under him.",
     "wrath": "Domination, entitlement, retaliation.",
@@ -8,6 +9,7 @@
   },
   "hades": {
     "name": "Hades", "greek": "Ἅιδης", "pole": "Reserve",
+    "epithet": "host of many", "symbols": "Bident, helm of darkness, cypress",
     "does": "Keeps his own realm and counsel, unseen.",
     "gift": "Depth, discretion, freedom from applause.",
     "wrath": "Withdrawal, secrecy, coldness nobody can reach.",
@@ -15,6 +17,7 @@
   },
   "hermes": {
     "name": "Hermes", "greek": "Ἑρμῆς", "pole": "Roaming",
+    "epithet": "the guide", "symbols": "Herald’s staff, winged sandals, the wayside herm",
     "does": "Seeks the new route, idea or trade.",
     "gift": "Invention, quick learning, joining separate worlds.",
     "wrath": "Restlessness, glibness, deceit.",
@@ -22,6 +25,7 @@
   },
   "hestia": {
     "name": "Hestia", "greek": "Ἑστία", "pole": "Dwelling",
+    "epithet": "first and last", "symbols": "Hearth fire, round altar, the first libation",
     "does": "Keeps the centre, the routine, the fire.",
     "gift": "Constancy, calm, continuity.",
     "wrath": "Inertia, insularity, refusal of change.",
@@ -29,6 +33,7 @@
   },
   "apollo": {
     "name": "Apollo", "greek": "Ἀπόλλων", "pole": "Measure",
+    "epithet": "the far-shooter", "symbols": "Lyre, laurel, bow",
     "does": "Plans, orders, holds to a standard.",
     "gift": "Mastery, clarity, foresight.",
     "wrath": "Rigidity, coldness, punishment of flaws.",
@@ -36,6 +41,7 @@
   },
   "dionysus": {
     "name": "Dionysus", "greek": "Διόνυσος", "pole": "Release",
+    "epithet": "the loosener", "symbols": "Vine, thyrsus, panther",
     "does": "Follows the moment into full immersion.",
     "gift": "Aliveness, spontaneity, shared joy.",
     "wrath": "Excess, chaos, savagery.",
@@ -43,6 +49,7 @@
   },
   "aphrodite": {
     "name": "Aphrodite", "greek": "Ἀφροδίτη", "pole": "Accord",
+    "epithet": "the laughter-loving", "symbols": "Scallop shell, dove, myrtle",
     "does": "Draws people together, pleases, persuades.",
     "gift": "Rapport, grace, peacemaking.",
     "wrath": "Flattery, vanity, flight from conflict.",
@@ -50,6 +57,7 @@
   },
   "ares": {
     "name": "Ares", "greek": "Ἄρης", "pole": "Contest",
+    "epithet": "bane of mortals", "symbols": "Spear, shield, crested helmet",
     "does": "Confronts, competes, strikes.",
     "gift": "Courage, candour, force in defence.",
     "wrath": "Aggression, cruelty, strife for its own sake.",
@@ -57,6 +65,7 @@
   },
   "athena": {
     "name": "Athena", "greek": "Ἀθηνᾶ", "pole": "Composure",
+    "epithet": "the grey-eyed", "symbols": "Owl, olive, aegis",
     "does": "Stays cool and thinks ahead.",
     "gift": "Judgement under pressure, strategy, self-command.",
     "wrath": "Coldness, contempt, pride in cleverness.",
@@ -64,6 +73,7 @@
   },
   "poseidon": {
     "name": "Poseidon", "greek": "Ποσειδῶν", "pole": "Surge",
+    "epithet": "the earth-shaker", "symbols": "Trident, horse, dolphin",
     "does": "Feels at full force and shows it.",
     "gift": "Emotional power, passion, sensitivity as radar.",
     "wrath": "Rage, grudge, moods that flood the room.",
@@ -71,6 +81,7 @@
   },
   "hera": {
     "name": "Hera", "greek": "Ἥρα", "pole": "Bond",
+    "epithet": "queen and keeper of vows", "symbols": "Peacock, diadem, pomegranate",
     "does": "Commits, belongs, guards the house.",
     "gift": "Fidelity, dependability, institutions that last.",
     "wrath": "Jealousy, possessiveness, vendetta.",
@@ -78,6 +89,7 @@
   },
   "artemis": {
     "name": "Artemis", "greek": "Ἄρτεμις", "pole": "Freedom",
+    "epithet": "mistress of the wild", "symbols": "Bow, crescent moon, deer",
     "does": "Keeps her own ground and her own rules.",
     "gift": "Independence, focus, defence of the unprotected.",
     "wrath": "Aloofness, merciless boundaries, isolation.",
@@ -85,6 +97,7 @@
   },
   "demeter": {
     "name": "Demeter", "greek": "Δημήτηρ", "pole": "Tending",
+    "epithet": "bringer of the seasons", "symbols": "Wheat ear, torch, poppy",
     "does": "Feeds, teaches, raises.",
     "gift": "Nurture, patience, the growth of others.",
     "wrath": "Smothering, withholding, collapse at loss.",
@@ -92,6 +105,7 @@
   },
   "hephaestus": {
     "name": "Hephaestus", "greek": "Ἥφαιστος", "pole": "Making",
+    "epithet": "the famed craftsman", "symbols": "Hammer, anvil, tongs",
     "does": "Builds, repairs, perfects objects.",
     "gift": "Craft, invention, perseverance.",
     "wrath": "Bitterness, hiding in work, revenge by device.",

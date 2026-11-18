@@ -1,5 +1,6 @@
 // A god's tag cloud, drawn from content/<locale>/tags.json.
 // Size comes from `weight`, colour from `tone`; css/app.css holds the scale.
+// Emblem words take the god's own colour (css/theme.css).
 
 import { h } from '../dom.js';
 import { fill } from '../text.js';
@@ -22,5 +23,5 @@ export function tagCloud(god, data, { size = 'large', key = true } = {}) {
     tones.map((tone) => h('span', { class: `cloud__key-item cloud__key-item--${tone}` }, ui.key[tone])),
   );
 
-  return h('figure', { class: `cloud cloud--${size}` }, words, legend);
+  return h('figure', { class: `cloud cloud--${size}`, 'data-god': god }, words, legend);
 }

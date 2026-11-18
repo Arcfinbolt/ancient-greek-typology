@@ -20,6 +20,8 @@
     "resume": "Continue the test",
     "seeResult": "See your result",
     "wheelCaption": "Each line joins two gods who pull in opposite directions.",
+    "friezeTitle": "The fourteen",
+    "friezeLink": "Meet the gods",
     "facts": [
       { "term": "About five minutes", "detail": "{count} statements on {pages} short pages." },
       { "term": "Stays in your browser", "detail": "Nothing you answer is sent anywhere." },
@@ -55,6 +57,14 @@
     "secondTitle": "{god} comes second",
     "neglectedTitle": "{god} is the god you neglect",
     "neglectedRule": "The Greek rule is that every god is owed honour. The one opposite your lead is the one you are most likely to skip.",
+    "epithet": "{god}, {epithet}",
+    "symbols": "Emblems: {symbols}",
+    "wheelTitle": "Your wheel",
+    "wheelIntro": "Each line carries one of your seven points. The further a point sits from the centre, the stronger the pull toward the god at that end.",
+    "wheelStrongest": "The ringed point is your strongest pull: {god}.",
+    "wheelStill": "All seven points rest at the centre. No god pulls clearly.",
+    "wheelOrder": "Your pulls, strongest first",
+    "wheelSpoken": "Your seven points on the wheel. {reading}",
     "polaritiesTitle": "Your seven polarities",
     "polaritiesIntro": "A bar that reaches further from the centre means a stronger pull toward that god.",
     "leaningsTitle": "Your leanings",
@@ -85,6 +95,7 @@
     "gift": "Gift",
     "wrath": "Wrath",
     "read": "Where to read it",
+    "symbols": "Emblems",
     "against": "{first} against {second}"
   }
 }

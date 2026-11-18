@@ -3,17 +3,22 @@
 
    Layout idea: a facing-page edition. The god's Greek name and word-portrait
    sit on the left leaf, the reading on the right.
-   Colour idea: the two Loeb Classical Library bindings. Green carries what is
-   Greek and what is yours; red is kept for a god's wrath. */
+   Colour idea: painted pottery. Cream slip for the page, black glaze for the
+   words, terracotta for ornament, and the purplish "added red" of black-figure
+   vases for a god's wrath. In the dark the scheme turns red-figure: glaze for
+   the ground, clay for the figures.
+   Each god also has a colour of their own (--god), set on any element that
+   carries data-god="<id>". */
 
 :root {
-  --paper: #f5f6f2;
-  --paper-deep: #e8ebe5;
-  --ink: #18211c;
-  --ink-soft: #55615a;
-  --rule: #cbd2ca;
-  --green: #1e5c44;
-  --red: #8b2d29;
+  --paper: #f6f1e6;
+  --paper-deep: #ebe3d3;
+  --ink: #1f1a16;
+  --ink-soft: #645a50;
+  --rule: #d6cbb8;
+  --accent: #a84a22;
+  --red: #7e1f2e;
+  --god: var(--accent);
 
   --font-display: 'GFS Didot', Didot, 'Bodoni 72', 'Bodoni MT', 'Noto Serif Display', Georgia, serif;
   --font-body: 'Commissioner Variable', Commissioner, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
@@ -32,24 +37,44 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --paper: #101613;
-    --paper-deep: #1b2520;
-    --ink: #e8ece6;
-    --ink-soft: #a3afa7;
-    --rule: #303d36;
-    --green: #86c7a5;
-    --red: #e59a93;
+    --paper: #15110e;
+    --paper-deep: #221b16;
+    --ink: #efe6d6;
+    --ink-soft: #b3a696;
+    --rule: #3b3028;
+    --accent: #d9814f;
+    --red: #e58f98;
     color-scheme: dark;
   }
+  :root:not([data-theme='light']) [data-god] { --god: var(--god-dark); }
 }
 
 :root[data-theme='dark'] {
-  --paper: #101613;
-  --paper-deep: #1b2520;
-  --ink: #e8ece6;
-  --ink-soft: #a3afa7;
-  --rule: #303d36;
-  --green: #86c7a5;
-  --red: #e59a93;
+  --paper: #15110e;
+  --paper-deep: #221b16;
+  --ink: #efe6d6;
+  --ink-soft: #b3a696;
+  --rule: #3b3028;
+  --accent: #d9814f;
+  --red: #e58f98;
   color-scheme: dark;
 }
+:root[data-theme='dark'] [data-god] { --god: var(--god-dark); }
+
+/* The gods' own colours: one for the cream page, one for the dark glaze.
+   Each keeps at least 4.5:1 against its ground, so it can carry text. */
+[data-god] { --god: var(--god-light); }
+[data-god='zeus']       { --god-light: #27508f; --god-dark: #8fb4f0; } /* the open sky */
+[data-god='hades']      { --god-light: #4d3d63; --god-dark: #b7a6d6; } /* dusk under the earth */
+[data-god='hermes']     { --god-light: #8a5f06; --god-dark: #e3b458; } /* road dust and saffron */
+[data-god='hestia']     { --god-light: #a23a1c; --god-dark: #f09a74; } /* embers */
+[data-god='apollo']     { --god-light: #806400; --god-dark: #e6c85a; } /* sun gold */
+[data-god='dionysus']   { --god-light: #7b2252; --god-dark: #e592bb; } /* wine */
+[data-god='aphrodite']  { --god-light: #ad2f66; --god-dark: #f49abb; } /* rose */
+[data-god='ares']       { --god-light: #9a1b14; --god-dark: #f28b7e; } /* blood */
+[data-god='athena']     { --god-light: #566619; --god-dark: #c3d07c; } /* olive */
+[data-god='poseidon']   { --god-light: #0b6477; --god-dark: #6fcbd6; } /* deep water */
+[data-god='hera']       { --god-light: #136a58; --god-dark: #72ccb4; } /* the peacock */
+[data-god='artemis']    { --god-light: #46607c; --god-dark: #a9c2dc; } /* moonlight */
+[data-god='demeter']    { --god-light: #4a6f1c; --god-dark: #aed27a; } /* green corn */
+[data-god='hephaestus'] { --god-light: #874718; --god-dark: #e3a06a; } /* bronze */

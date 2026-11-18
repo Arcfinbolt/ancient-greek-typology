@@ -38,15 +38,18 @@ content/en/        every word a visitor reads, one folder per language
   snippets.json      the result paragraphs
   ui.json            buttons, headings, labels
 css/
-  theme.css          colours, typefaces, measures (the only file to edit for a new look)
+  theme.css          colours, typefaces, measures, and one colour per god (the only file to edit for a new look)
   fonts.css          the self-hosted typefaces
   app.css            layout and components
+img/
+  meander.svg        one repeat of the Greek key, used as a mask for every border
 js/
   scoring.js         the numbers: order, scores, bands, type            (pure, tested)
   report.js          the words: which paragraphs a result shows         (pure, tested)
   validate.js        checks that config and content agree               (pure)
   model.js, data.js, text.js, store.js, dom.js    small helpers
-  components/        tag cloud, polarity bar, wheel
+  art/               the drawings: emblems.js (one sign per god), ornament.js (temple, meander ring)
+  components/        emblem, tag cloud, polarity bar, wheel
   views/             the four pages; result-sections.js holds the result page's blocks
 tests/, tools/     the test suite and the validator
 ```
@@ -70,9 +73,23 @@ tests/, tools/     the test suite and the validator
 | The blocks of the result page and their order | `resultSections` in `config/app.json`; add a block as a function in `js/views/result-sections.js` |
 | Saving progress, result links, the gods page | `features` in `config/app.json` |
 | Colours and typefaces | `css/theme.css` and `css/fonts.css` |
+| A god's colour | the `[data-god='…']` lines in `css/theme.css`: one colour for the light page, one for the dark |
+| A god's emblem | its drawing in `js/art/emblems.js` (a 48 by 48 box, stroked in `currentColor`) |
+| A god's epithet and list of emblems | `epithet` and `symbols` in `content/en/gods.json` |
 | The scoring method itself | `js/scoring.js`; the views only read its output |
 
 After any change to `config/` or `content/`, run `npm run check`. The validator names the file and the entry that no longer lines up.
+
+## How it looks
+
+The look is painted pottery: a cream page, black words, terracotta ornament, and a dark scheme that turns the same colours round. All of the artwork is drawn in code or kept as small SVG files in this repository, so nothing is fetched from elsewhere.
+
+- **Each god has a colour and an emblem.** Any element with `data-god="<id>"` takes that god's colour through the `--god` token. The emblem is a single sign on a disc: the thunderbolt for Zeus, the owl for Athena, the trident for Poseidon and so on. A hollow disc marks a god who is not pulling, or the one neglected.
+- **The wheel** is drawn like the inside of a cup, with a meander round the rim and the fourteen discs on the edge. On the result page it carries the seven points of the result: one on each line, further from the centre the stronger the pull, in the colour of the god it leans to. The strongest is ringed.
+- **The result page** takes the lead god's colour in its header, with the emblem in a laurel wreath. Every block about a god (lead, second, neglected) is ruled, titled and tagged in that god's colour, and each polarity bar fills in the colour of the god it leans to.
+- **Tag clouds** set a god's own images (tone `emblem`) in the display face and the god's colour, so the thunderbolt reads as Zeus's and the vine as Dionysus's.
+
+A new god needs a line in `css/theme.css` and a drawing in `js/art/emblems.js`; without them the god gets the terracotta accent and a plain disc.
 
 ## How a result is worked out
 
