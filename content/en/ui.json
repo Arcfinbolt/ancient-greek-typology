@@ -3,17 +3,30 @@
     "title": "Pantheon",
     "documentTitle": "Pantheon Sorter",
     "footer": "Pantheon Typology. A provisional sorter: the cut-offs have not been normed.",
-    "loading": "Loading the test…"
+    "loading": "Loading the test…",
+    "editionLabel": "Plates",
+    "editions": { "marble": "Marble", "paint": "Marble and paint" }
   },
 
   "nav": {
     "home": "Pantheon",
     "test": "Take the test",
     "result": "Your result",
-    "gods": "The fourteen gods"
+    "gods": "The fourteen gods",
+    "credits": "Image credits"
   },
 
   "intro": {
+    "kicker": "A typology in fourteen gods",
+    "epigraph": {
+      "greek": "πάντα πλήρη θεῶν",
+      "text": "All things are full of gods.",
+      "source": "Thales, as Aristotle reports him"
+    },
+    "modelKicker": "The model",
+    "modelTitle": "Seven questions, two gods to each",
+    "modelIntro": "Each polarity asks one question and sets two gods at its ends. Nobody is all one god. The test finds where you stand on each line, then names the god you lead with and the one who stands across from it.",
+    "galleryKicker": "The pantheon",
     "headline": "Find the god you lead with, and the one you neglect.",
     "lede": "Fourteen Greek gods stand at the two ends of seven polarities, such as Athena’s composure against Poseidon’s surge. Rate {count} statements and see where you stand on each.",
     "start": "Start the test",
@@ -21,7 +34,7 @@
     "seeResult": "See your result",
     "wheelCaption": "Each line joins two gods who pull in opposite directions.",
     "friezeTitle": "The fourteen",
-    "friezeLink": "Meet the gods",
+    "friezeLink": "Meet the fourteen",
     "facts": [
       { "term": "About five minutes", "detail": "{count} statements on {pages} short pages." },
       { "term": "Stays in your browser", "detail": "Nothing you answer is sent anywhere." },
@@ -59,9 +72,14 @@
     "neglectedRule": "The Greek rule is that every god is owed honour. The one opposite your lead is the one you are most likely to skip.",
     "epithet": "{god}, {epithet}",
     "symbols": "Emblems: {symbols}",
+    "wheelKicker": "At a glance",
     "wheelTitle": "Your wheel",
-    "wheelIntro": "Each line carries one of your seven points. The further a point sits from the centre, the stronger the pull toward the god at that end.",
-    "wheelStrongest": "The ringed point is your strongest pull: {god}.",
+    "leadLabel": "Your lead",
+    "secondLabel": "Your second",
+    "neglectedLabel": "Owed honour",
+    "polaritiesKicker": "In full",
+    "wheelIntro": "Each line carries one of your seven points. The further a point sits from the centre, the stronger the pull toward the god at that end. The dotted circles mark where a lean becomes clear, then strong.",
+    "wheelStrongest": "The ringed point and the filled sign mark your strongest pull: {god}.",
     "wheelStill": "All seven points rest at the centre. No god pulls clearly.",
     "wheelOrder": "Your pulls, strongest first",
     "wheelSpoken": "Your seven points on the wheel. {reading}",
@@ -90,6 +108,7 @@
   },
 
   "gods": {
+    "kicker": "The pantheon",
     "title": "The fourteen gods",
     "intro": "Seven polarities with two gods each. In every word-portrait, larger words matter more to the god’s character.",
     "gift": "Gift",
@@ -97,5 +116,13 @@
     "read": "Where to read it",
     "symbols": "Emblems",
     "against": "{first} against {second}"
+  },
+
+  "credits": {
+    "kicker": "Sources",
+    "title": "The plates",
+    "intro": "Every statue and painting on this site, with the collection that holds it, the source of the photograph and its licence. The statues are shown in black and white. All pictures are cropped.",
+    "sets": { "statues": "Statues", "paintings": "Paintings" },
+    "source": "Source file"
   }
 }

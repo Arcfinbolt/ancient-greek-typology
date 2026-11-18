@@ -1,6 +1,6 @@
 # Pantheon Sorter
 
-A 28-statement test for the Pantheon Typology: fourteen Greek gods at the two ends of seven polarities. It names a lead god, a second god and the god you neglect, and shows a tag cloud and a few paragraphs for each.
+A 28-statement test for the Pantheon Typology: fourteen Greek gods at the two ends of seven polarities. It names a lead god, a second god and the god you neglect, and shows a statue, a tag cloud and a few paragraphs for each.
 
 It is a static site with no build step and no dependencies. Everything a person answers stays in their browser.
 
@@ -29,28 +29,32 @@ config/            structure and rules, no prose
   model.json         the gods and which two face each other
   items.json         which statements exist and which god each counts toward
   scoring.json       answer scale, bands, tier rules, minimum paragraphs, norms
-  app.json           statement order, page size, result-page sections, feature switches
+  app.json           statement order, page size, result-page sections, edition, feature switches
+  plates.json        the statue and the painting of each god: file, size, credit
 content/en/        every word a visitor reads, one folder per language
   items.json         the statements
   gods.json          names, Greek names, pole words, gift, wrath, sources
   polarities.json    the question each polarity asks
   tags.json          the tag clouds
   snippets.json      the result paragraphs
+  plates.json        the title and caption under each statue and painting
   ui.json            buttons, headings, labels
 css/
   theme.css          colours, typefaces, measures, and one colour per god (the only file to edit for a new look)
   fonts.css          the self-hosted typefaces
   app.css            layout and components
 img/
-  meander.svg        one repeat of the Greek key, used as a mask for every border
+  statues/           one black-and-white plate per god, with a half-size copy (-s)
+  paintings/         one painting per god, with a half-size copy (-s)
+  meander.svg        one repeat of the Greek key, used as a small ornament
 js/
   scoring.js         the numbers: order, scores, bands, type            (pure, tested)
   report.js          the words: which paragraphs a result shows         (pure, tested)
   validate.js        checks that config and content agree               (pure)
   model.js, data.js, text.js, store.js, dom.js    small helpers
-  art/               the drawings: emblems.js (one sign per god), ornament.js (temple, meander ring)
-  components/        emblem, tag cloud, polarity bar, wheel
-  views/             the four pages; result-sections.js holds the result page's blocks
+  art/               emblems.js: one drawn sign per god
+  components/        plate, emblem, tag cloud, polarity bar, wheel
+  views/             the five pages; result-sections.js holds the result page's blocks
 tests/, tools/     the test suite and the validator
 ```
 
@@ -74,7 +78,9 @@ tests/, tools/     the test suite and the validator
 | Saving progress, result links, the gods page | `features` in `config/app.json` |
 | Colours and typefaces | `css/theme.css` and `css/fonts.css` |
 | A god's colour | the `[data-god='…']` lines in `css/theme.css`: one colour for the light page, one for the dark |
-| A god's emblem | its drawing in `js/art/emblems.js` (a 48 by 48 box, stroked in `currentColor`) |
+| A god's sign | its drawing in `js/art/emblems.js` (a 48 by 48 box, stroked in `currentColor`) |
+| A god's statue or painting | replace the files in `img/statues/` or `img/paintings/`, then the entry in `config/plates.json` (size, credit) and the caption in `content/en/plates.json` |
+| Statues only, or statues and paintings | `edition` in `config/app.json` (`marble` or `paint`); `editions` lists what the switch in the footer offers |
 | A god's epithet and list of emblems | `epithet` and `symbols` in `content/en/gods.json` |
 | The scoring method itself | `js/scoring.js`; the views only read its output |
 
@@ -82,14 +88,20 @@ After any change to `config/` or `content/`, run `npm run check`. The validator 
 
 ## How it looks
 
-The look is painted pottery: a cream page, black words, terracotta ornament, and a dark scheme that turns the same colours round. All of the artwork is drawn in code or kept as small SVG files in this repository, so nothing is fetched from elsewhere.
+The look is a sculpture gallery: a page the colour of marble by day and of the unlit room by night, near-black type, hairline rules and one quiet bronze. The pictures carry the feeling, so everything else stays out of their way.
 
-- **Each god has a colour and an emblem.** Any element with `data-god="<id>"` takes that god's colour through the `--god` token. The emblem is a single sign on a disc: the thunderbolt for Zeus, the owl for Athena, the trident for Poseidon and so on. A hollow disc marks a god who is not pulling, or the one neglected.
-- **The wheel** is drawn like the inside of a cup, with a meander round the rim and the fourteen discs on the edge. On the result page it carries the seven points of the result: one on each line, further from the centre the stronger the pull, in the colour of the god it leans to. The strongest is ringed.
-- **The result page** takes the lead god's colour in its header, with the emblem in a laurel wreath. Every block about a god (lead, second, neglected) is ruled, titled and tagged in that god's colour, and each polarity bar fills in the colour of the god it leans to.
-- **Tag clouds** set a god's own images (tone `emblem`) in the display face and the god's colour, so the thunderbolt reads as Zeus's and the vine as Dionysus's.
+- **Plates.** Every god has a statue, shown in black and white and cropped to a head-and-shoulders plate, and a painting, shown in colour. Each has a title and a caption, and every source is listed on the credits page (`#credits`).
+- **Two editions.** `marble` shows statues only. `paint` adds the painting of each god beside the reading and on the gods page, and puts two paintings among the three plates on the opening page. A visitor switches between them in the footer; `?plates=marble` or `?plates=paint` in the address sets it for a link.
+- **Each god has a colour and a sign.** Any element with `data-god="<id>"` takes that god's colour through the `--god` token. It is used for thin rules, small labels and the points on the wheel, never for large areas. The sign is a fine line drawing in a ring: the thunderbolt for Zeus, the owl for Athena, the trident for Poseidon and so on.
+- **The wheel.** A ring runs round the outside and carries the fourteen signs. On the result page it also carries the seven points of the result: one on each line, further from the centre the stronger the pull, in the colour of the god it leans to. The strongest god's cell is filled and its point is ringed; the dotted circles mark where the bands of `config/scoring.json` begin.
+- **The result page** opens with the name of the result set very large beside the lead god's statue (both statues for a shared lead). Each god's chapter is ruled, titled and tagged in that god's colour, and each polarity bar fills in the colour of the god it leans to.
+- **Tag clouds** set a god's own images (tone `emblem`) in the display face and the god's colour.
 
-A new god needs a line in `css/theme.css` and a drawing in `js/art/emblems.js`; without them the god gets the terracotta accent and a plain disc.
+A new god needs a line in `css/theme.css`, a drawing in `js/art/emblems.js`, and a statue and a painting in `config/plates.json`.
+
+### Where the pictures come from
+
+All of them are from Wikimedia Commons. The statues are public domain or CC0 photographs. The paintings are in the public domain; two of the photographs of them carry a Creative Commons licence (CC BY 3.0 and CC BY-SA 4.0) and are credited, with a link to the licence, on the credits page. `config/plates.json` holds the photographer, licence and source link for every file.
 
 ## How a result is worked out
 
@@ -128,8 +140,8 @@ GFS Didot has no Latin Extended glyphs, so letters such as ğ, ş and İ in head
 
 ## Privacy
 
-The page loads only its own files: no analytics, no third-party fonts, no cookies. Answers are kept in the browser's local storage so that a visit can be resumed, and are removed by "Retake the test". A result link carries the answers in its address, so anyone given the link can see them.
+The page loads only its own files: no analytics, no third-party fonts, no cookies. Answers are kept in the browser's local storage so that a visit can be resumed, and are removed by "Retake the test". The choice of edition is kept the same way. A result link carries the answers in its address, so anyone given the link can see them.
 
 ## Typefaces and licence
 
-GFS Didot (Greek Font Society) and Commissioner (Kostas Bartsokas) are bundled under the SIL Open Font License; the licence texts are in `fonts/`. No licence has been chosen yet for the code and the content of this repository.
+GFS Didot (Greek Font Society) and Commissioner (Kostas Bartsokas) are bundled under the SIL Open Font License; the licence texts are in `fonts/`. The pictures keep the licences listed in `config/plates.json`. No licence has been chosen yet for the code and the text of this repository.

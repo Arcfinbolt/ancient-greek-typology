@@ -1,8 +1,11 @@
 {
-  "about": "How the test is presented. itemOrder: `balanced` (each page takes one statement from every polarity), `shuffled` (seeded, same for everyone) or `fixed` (the order in config/items.json). itemsPerPage 0 puts every statement on one page. resultSections lists the blocks of the result page in order; each name is a function in js/views/result-sections.js.",
+  "about": "How the test is presented. edition picks the pictures: `marble` shows statues only, `paint` adds a painting of each god; editions lists the ones a visitor may switch between in the footer. itemOrder: `balanced` (each page takes one statement from every polarity), `shuffled` (seeded, same for everyone) or `fixed` (the order in config/items.json). itemsPerPage 0 puts every statement on one page. resultSections lists the blocks of the result page in order; each name is a function in js/views/result-sections.js.",
 
   "defaultLocale": "en",
   "locales": ["en"],
+
+  "edition": "marble",
+  "editions": ["marble", "paint"],
 
   "itemOrder": "balanced",
   "orderSeed": 14,

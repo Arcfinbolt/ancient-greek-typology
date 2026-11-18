@@ -1,5 +1,5 @@
 // Starts the app: loads the data, restores saved answers, and switches
-// between the four views named in the address bar (#home, #test, #result, #gods).
+// between the views named in the address bar (#home, #test, #result, #gods, #credits).
 
 import { h } from './dom.js';
 import { fill } from './text.js';
@@ -11,9 +11,10 @@ import { introView } from './views/intro.js';
 import { quizView } from './views/quiz.js';
 import { resultView } from './views/result.js';
 import { godsView } from './views/gods.js';
+import { creditsView } from './views/credits.js';
 import { sectionNames } from './views/result-sections.js';
 
-const views = { home: introView, test: quizView, result: resultView, gods: godsView };
+const views = { home: introView, test: quizView, result: resultView, gods: godsView, credits: creditsView };
 
 const mount = document.getElementById('app');
 const nav = document.getElementById('nav');
@@ -51,6 +52,14 @@ async function start() {
     ? { answers: saved.answers || {}, page: saved.page || 0 }
     : { answers: {}, page: 0 };
 
+  // The edition decides which plates are shown: `marble` is statues only,
+  // `paint` adds the paintings. ?plates= in the address wins, then the choice
+  // made in the footer, then the default in config/app.json.
+  const editions = data.app.editions || ['marble'];
+  const editionStore = createStore(`${data.app.storageKey}-edition`, true);
+  const asked = new URLSearchParams(location.search).get('plates');
+  let edition = [asked, editionStore.read(), data.app.edition].find((name) => editions.includes(name)) || editions[0];
+
   // A result link carries its answers in ?r=. They are shown, never saved.
   const sharedCode = new URLSearchParams(location.search).get('r');
   let shared = sharedCode ? decodeAnswers(sharedCode, data.items, data.scoring.scale) : null;
@@ -59,6 +68,7 @@ async function start() {
     data,
     state,
     get shared() { return shared; },
+    get edition() { return edition; },
     // A result link only works where the page owns its address, so not inside a frame.
     canShare: data.app.features.shareLink && window.parent === window,
     save: () => store.write({ version: data.items.version, answers: state.answers, page: state.page }),
@@ -85,7 +95,8 @@ async function start() {
     },
     shareUrl() {
       const code = encodeAnswers(state.answers, data.items, data.scoring.scale);
-      return `${location.origin}${location.pathname}?r=${encodeURIComponent(code)}#result`;
+      const plates = edition === data.app.edition ? '' : `&plates=${edition}`;
+      return `${location.origin}${location.pathname}?r=${encodeURIComponent(code)}${plates}#result`;
     },
   };
 
@@ -99,20 +110,38 @@ async function start() {
         complete || shared ? link('result', ui.nav.result) : link('test', ui.nav.test),
       ),
     );
-    foot.textContent = fill(ui.app.footer, {});
+    // The footer: a line about the test, the switch between editions, the credits.
+    const choose = (name) => {
+      edition = name;
+      editionStore.write(name);
+      render({ keepScroll: true });
+    };
+    foot.replaceChildren(
+      h('p', { class: 'site-foot__note' }, fill(ui.app.footer, {})),
+      h('div', { class: 'site-foot__tools' },
+        editions.length > 1 && h('div', { class: 'switch', role: 'group', 'aria-label': ui.app.editionLabel },
+          h('span', { class: 'switch__label' }, ui.app.editionLabel),
+          editions.map((name) => h('button', {
+            class: 'switch__option', type: 'button', 'aria-pressed': name === edition ? 'true' : 'false',
+            onClick: () => choose(name),
+          }, ui.app.editions[name] || name)),
+        ),
+        h('a', { class: 'link', href: '#credits', 'aria-current': current === 'credits' ? 'page' : null }, ui.nav.credits),
+      ),
+    );
   }
 
-  function render() {
+  function render({ keepScroll = false } = {}) {
     let name = location.hash.replace(/^#/, '') || (shared ? 'result' : 'home');
     if (!views[name] || (name === 'gods' && !data.app.features.godsPage)) name = 'home';
     drawChrome(name);
     const view = views[name](ctx);
     mount.replaceChildren(view);
     mount.dataset.view = name;
-    ctx.focusTop(view);
+    if (!keepScroll) ctx.focusTop(view);
   }
 
-  window.addEventListener('hashchange', render);
+  window.addEventListener('hashchange', () => render());
   render();
 }
 

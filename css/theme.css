@@ -1,24 +1,26 @@
 /* Every colour, typeface and measure the interface uses. Change the look here;
    app.css only refers to these tokens.
 
-   Layout idea: a facing-page edition. The god's Greek name and word-portrait
-   sit on the left leaf, the reading on the right.
-   Colour idea: painted pottery. Cream slip for the page, black glaze for the
-   words, terracotta for ornament, and the purplish "added red" of black-figure
-   vases for a god's wrath. In the dark the scheme turns red-figure: glaze for
-   the ground, clay for the figures.
+   Layout idea: a facing-page edition. A god's plate, Greek name and sign sit
+   on the left leaf, the reading on the right.
+   Colour idea: a sculpture gallery. The page is the colour of marble by day
+   and of the unlit room by night; the words are near-black or near-white; one
+   quiet bronze does the work of an accent. The plates carry the feeling, so
+   everything else stays out of their way.
    Each god also has a colour of their own (--god), set on any element that
-   carries data-god="<id>". */
+   carries data-god="<id>". It is used for thin rules, small labels and the
+   points on the wheel, never for large areas. */
 
 :root {
-  --paper: #f6f1e6;
-  --paper-deep: #ebe3d3;
-  --ink: #1f1a16;
-  --ink-soft: #645a50;
-  --rule: #d6cbb8;
-  --accent: #a84a22;
-  --red: #7e1f2e;
+  --paper: #f4f1ea;
+  --paper-deep: #e9e5db;
+  --ink: #15120f;
+  --ink-soft: #675f55;
+  --rule: #d6cfc2;
+  --accent: #7a5c26;
+  --red: #7a1f2b;
   --god: var(--accent);
+  --plate-ground: #1b1815;
 
   --font-display: 'GFS Didot', Didot, 'Bodoni 72', 'Bodoni MT', 'Noto Serif Display', Georgia, serif;
   --font-body: 'Commissioner Variable', Commissioner, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
@@ -26,55 +28,60 @@
   --text: 1.0625rem;
   --text-small: 0.875rem;
   --text-large: 1.25rem;
-  --leading: 1.6;
+  --leading: 1.65;
+  --label: 500 0.72rem / 1.5 var(--font-body);
+  --tracking: 0.17em;
 
-  --page: 68rem;
+  --page: 72rem;
   --measure: 35rem;
-  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --gutter: clamp(1.15rem, 4vw, 2.75rem);
+  --section: clamp(3.25rem, 8vw, 6.5rem);
 
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --paper: #15110e;
-    --paper-deep: #221b16;
-    --ink: #efe6d6;
-    --ink-soft: #b3a696;
-    --rule: #3b3028;
-    --accent: #d9814f;
-    --red: #e58f98;
+    --paper: #0f0e0c;
+    --paper-deep: #191714;
+    --ink: #ece7db;
+    --ink-soft: #a59c8d;
+    --rule: #2f2b25;
+    --accent: #c9a961;
+    --red: #e08f97;
+    --plate-ground: #060605;
     color-scheme: dark;
   }
   :root:not([data-theme='light']) [data-god] { --god: var(--god-dark); }
 }
 
 :root[data-theme='dark'] {
-  --paper: #15110e;
-  --paper-deep: #221b16;
-  --ink: #efe6d6;
-  --ink-soft: #b3a696;
-  --rule: #3b3028;
-  --accent: #d9814f;
-  --red: #e58f98;
+  --paper: #0f0e0c;
+  --paper-deep: #191714;
+  --ink: #ece7db;
+  --ink-soft: #a59c8d;
+  --rule: #2f2b25;
+  --accent: #c9a961;
+  --red: #e08f97;
+  --plate-ground: #060605;
   color-scheme: dark;
 }
 :root[data-theme='dark'] [data-god] { --god: var(--god-dark); }
 
-/* The gods' own colours: one for the cream page, one for the dark glaze.
-   Each keeps at least 4.5:1 against its ground, so it can carry text. */
+/* The gods' own colours: one for the pale page, one for the dark. Each keeps
+   at least 4.5:1 against its ground, so it can carry small text. */
 [data-god] { --god: var(--god-light); }
-[data-god='zeus']       { --god-light: #27508f; --god-dark: #8fb4f0; } /* the open sky */
-[data-god='hades']      { --god-light: #4d3d63; --god-dark: #b7a6d6; } /* dusk under the earth */
-[data-god='hermes']     { --god-light: #8a5f06; --god-dark: #e3b458; } /* road dust and saffron */
-[data-god='hestia']     { --god-light: #a23a1c; --god-dark: #f09a74; } /* embers */
-[data-god='apollo']     { --god-light: #806400; --god-dark: #e6c85a; } /* sun gold */
-[data-god='dionysus']   { --god-light: #7b2252; --god-dark: #e592bb; } /* wine */
-[data-god='aphrodite']  { --god-light: #ad2f66; --god-dark: #f49abb; } /* rose */
-[data-god='ares']       { --god-light: #9a1b14; --god-dark: #f28b7e; } /* blood */
-[data-god='athena']     { --god-light: #566619; --god-dark: #c3d07c; } /* olive */
-[data-god='poseidon']   { --god-light: #0b6477; --god-dark: #6fcbd6; } /* deep water */
-[data-god='hera']       { --god-light: #136a58; --god-dark: #72ccb4; } /* the peacock */
-[data-god='artemis']    { --god-light: #46607c; --god-dark: #a9c2dc; } /* moonlight */
-[data-god='demeter']    { --god-light: #4a6f1c; --god-dark: #aed27a; } /* green corn */
-[data-god='hephaestus'] { --god-light: #874718; --god-dark: #e3a06a; } /* bronze */
+[data-god='zeus']       { --god-light: #2c4f86; --god-dark: #93b3e6; } /* the open sky */
+[data-god='hades']      { --god-light: #4b3f5e; --god-dark: #b5a8cf; } /* dusk under the earth */
+[data-god='hermes']     { --god-light: #85601a; --god-dark: #d9b064; } /* road dust and saffron */
+[data-god='hestia']     { --god-light: #99401f; --god-dark: #e39a78; } /* embers */
+[data-god='apollo']     { --god-light: #7c6410; --god-dark: #dcc266; } /* sun gold */
+[data-god='dionysus']   { --god-light: #74284d; --god-dark: #d993b4; } /* wine */
+[data-god='aphrodite']  { --god-light: #9c3558; --god-dark: #e79db5; } /* rose */
+[data-god='ares']       { --god-light: #8f211a; --god-dark: #e58c80; } /* blood */
+[data-god='athena']     { --god-light: #55631f; --god-dark: #bcc87f; } /* olive */
+[data-god='poseidon']   { --god-light: #16606f; --god-dark: #79c2cb; } /* deep water */
+[data-god='hera']       { --god-light: #1d6556; --god-dark: #7fc4b0; } /* the peacock */
+[data-god='artemis']    { --god-light: #485f78; --god-dark: #a8bfd6; } /* moonlight */
+[data-god='demeter']    { --god-light: #4c6b23; --god-dark: #abca80; } /* green corn */
+[data-god='hephaestus'] { --god-light: #7f4a1f; --god-dark: #d9a070; } /* bronze */

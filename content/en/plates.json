@@ -1,0 +1,37 @@
+{
+  "about": "The words under each plate. `title` names the work; `detail` says what it is, when it was made and where it is kept. Which file belongs to which god, and who photographed it, is in config/plates.json.",
+
+  "statues": {
+    "zeus":       { "title": "Zeus of Otricoli", "detail": "Roman marble after a Greek original of the 4th century BC. Vatican Museums, Rome." },
+    "hades":      { "title": "Bust of Hades", "detail": "Roman marble after a Greek original of the 5th century BC. Palazzo Altemps, Rome." },
+    "hermes":     { "title": "Hermes Ingenui", "detail": "Roman marble after a Greek original of the 5th century BC. Vatican Museums, Rome." },
+    "hestia":     { "title": "Hestia Giustiniani", "detail": "Roman marble after a Greek bronze of about 470 BC. Torlonia Collection, Rome." },
+    "apollo":     { "title": "Apollo Belvedere", "detail": "Roman marble after a Greek bronze of the 4th century BC. Vatican Museums, Rome." },
+    "dionysus":   { "title": "Dionysus", "detail": "Roman marble in the manner of Praxiteles, 4th century BC. Palazzo Altemps, Rome." },
+    "aphrodite":  { "title": "Venus de Milo", "detail": "Greek marble from the island of Melos, about 130 to 100 BC. Louvre, Paris." },
+    "ares":       { "title": "Ludovisi Ares", "detail": "Roman marble after a Greek original of about 320 BC. Palazzo Altemps, Rome." },
+    "athena":     { "title": "Athena of Velletri", "detail": "Roman marble bust after a Greek bronze of about 430 BC. Glyptothek, Munich." },
+    "poseidon":   { "title": "Artemision Bronze", "detail": "Poseidon or Zeus, about 460 BC, found in the sea off Cape Artemision. Shown here in a modern cast of the bronze in Athens." },
+    "hera":       { "title": "Juno Ludovisi", "detail": "Colossal Roman marble head, 1st century AD. Palazzo Altemps, Rome." },
+    "artemis":    { "title": "Diana of Versailles", "detail": "Roman marble after a Greek bronze of about 325 BC. Louvre, Paris." },
+    "demeter":    { "title": "Demeter", "detail": "Roman marble after a Greek original of the 4th century BC. Palazzo Altemps, Rome." },
+    "hephaestus": { "title": "Vulcan", "detail": "Bertel Thorvaldsen, marble, modelled in 1838. Thorvaldsens Museum, Copenhagen." }
+  },
+
+  "paintings": {
+    "zeus":       { "title": "Jupiter and Thetis", "detail": "Jean-Auguste-Dominique Ingres, 1811. Musée Granet, Aix-en-Provence." },
+    "hades":      { "title": "Pluto", "detail": "Agostino Carracci, 1592. Galleria Estense, Modena." },
+    "hermes":     { "title": "Mercury", "detail": "Hendrick Goltzius, 1611. Mauritshuis, The Hague, on loan to the Frans Hals Museum, Haarlem." },
+    "hestia":     { "title": "Vestals at the Hearth of Vesta", "detail": "Jean Raoux, early 18th century. Herzog Anton Ulrich-Museum, Braunschweig." },
+    "apollo":     { "title": "Apollo, God of Light, with Urania", "detail": "Charles Meynier, 1798. Cleveland Museum of Art." },
+    "dionysus":   { "title": "Bacchus", "detail": "Caravaggio, about 1596. Uffizi, Florence." },
+    "aphrodite":  { "title": "The Birth of Venus", "detail": "Sandro Botticelli, about 1485. Uffizi, Florence." },
+    "ares":       { "title": "Mars and Rhea Silvia (detail)", "detail": "Peter Paul Rubens, about 1617. Liechtenstein Museum, Vienna." },
+    "athena":     { "title": "Pallas Athene", "detail": "Gustav Klimt, 1898. Wien Museum, Vienna." },
+    "poseidon":   { "title": "Neptune’s Horses", "detail": "Walter Crane, about 1892. Study for the painting in the Neue Pinakothek, Munich." },
+    "hera":       { "title": "Juno", "detail": "Rembrandt, about 1662 to 1665. Hammer Museum, Los Angeles." },
+    "artemis":    { "title": "Diana the Huntress", "detail": "Orazio Gentileschi, about 1630. Musée d’Arts, Nantes." },
+    "demeter":    { "title": "Demeter Mourning for Persephone", "detail": "Evelyn De Morgan, 1906. De Morgan Collection." },
+    "hephaestus": { "title": "Vulcan Forging the Thunderbolts of Jupiter", "detail": "Peter Paul Rubens, 1636 to 1638. Museo del Prado, Madrid." }
+  }
+}

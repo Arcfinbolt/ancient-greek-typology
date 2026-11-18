@@ -34,7 +34,7 @@ export function polarityBar(row, data) {
   const end = (id, which) => {
     const leading = row.god === id;
     return h('div', { class: `pbar__end pbar__end--${which}${leading ? ' is-leading' : ''}`, 'data-god': id },
-      emblem(id, { size: 34, hollow: !leading }),
+      emblem(id, { size: 34, solid: leading && row.band !== scoring.bands[0].id }),
       h('span', { class: 'pbar__names' },
         h('span', { class: 'pbar__god' }, content.gods[id].name),
         h('span', { class: 'pbar__pole' }, content.gods[id].pole),

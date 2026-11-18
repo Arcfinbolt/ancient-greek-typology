@@ -8,7 +8,7 @@ import { orderStrategies } from './scoring.js';
 export function validateData(data, { knownSections } = {}) {
   const problems = [];
   const say = (msg) => problems.push(msg);
-  const { model, items, scoring, app, content } = data;
+  const { model, items, scoring, app, content, plates } = data;
   const godIds = model.godIds;
 
   // model
@@ -87,6 +87,27 @@ export function validateData(data, { knownSections } = {}) {
     if ((content.ui.quiz[key] || []).length !== points) say(`content ui.json: quiz.${key} needs ${points} labels, one per scale point.`);
   }
   for (const b of bands) if (!content.ui.result.band[b.id]) say(`content ui.json: result.band has no label for band "${b.id}".`);
+
+  // plates: every god has a statue and a painting, each with a file, a size and a title
+  for (const set of ['statues', 'paintings']) {
+    for (const god of godIds) {
+      const file = plates && plates[set] && plates[set][god];
+      if (!file) { say(`config/plates.json: no ${set} entry for "${god}".`); continue; }
+      if (!file.file || !Array.isArray(file.size) || file.size.length !== 2) say(`config/plates.json: ${set}.${god} needs a file and a [width, height] size.`);
+      for (const key of ['author', 'licence', 'source']) if (!file[key]) say(`config/plates.json: ${set}.${god} has no ${key}, which the credits page needs.`);
+      const words = content.plates && content.plates[set] && content.plates[set][god];
+      if (!words || !words.title) say(`content plates.json: no title for ${set}.${god}.`);
+    }
+  }
+  for (const god of (plates && plates.hero) || []) {
+    if (!model.gods[god]) say(`config/plates.json: hero names unknown god "${god}".`);
+  }
+  const editions = app.editions || [];
+  if (!editions.includes(app.edition)) say('config/app.json: edition is not listed in editions.');
+  for (const name of editions) {
+    if (!['marble', 'paint'].includes(name)) say(`config/app.json: unknown edition "${name}"; the editions are marble and paint.`);
+    if (!content.ui.app.editions || !content.ui.app.editions[name]) say(`content ui.json: app.editions has no label for "${name}".`);
+  }
 
   // presentation
   if (!app.locales.includes(app.defaultLocale)) say('config/app.json: defaultLocale is not listed in locales.');

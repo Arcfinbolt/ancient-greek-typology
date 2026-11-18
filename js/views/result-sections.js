@@ -4,42 +4,61 @@
 //
 // Each receives { data, report, ctx }: data is everything loaded from config/
 // and content/, report comes from js/report.js, ctx offers go(), reset(),
-// shareUrl() and the flags `shared` and `canShare`.
+// shareUrl(), the flags `shared` and `canShare`, and `edition` ('marble' or
+// 'paint': whether paintings are shown beside the statues).
 
 import { h } from '../dom.js';
-import { fill } from '../text.js';
+import { fill, roman } from '../text.js';
 import { tagCloud } from '../components/tagcloud.js';
 import { polarityBar } from '../components/polaritybar.js';
 import { emblem } from '../components/emblem.js';
 import { wheel } from '../components/wheel.js';
-import { temple } from '../art/ornament.js';
+import { plate, slice, painted } from '../components/plate.js';
+
+/** The gods whose statues already stand in the header, so that no plate is shown twice. */
+function inHeader(report) {
+  if (!report.lead) return [];
+  return report.tier === 'shared' && report.second ? [report.lead.god, report.second.god] : [report.lead.god];
+}
 
 /**
- * A facing-page block: the god's emblem, Greek name and tag cloud on the left,
- * the reading on the right. data-god gives the whole block the god's colour.
- * role: 'lead' (wreathed emblem), 'second' or 'neglected' (hollow emblem).
+ * A facing-page block. Left leaf: the god's plate, Greek name and tag cloud.
+ * Right leaf: the reading. data-god gives the whole block the god's colour.
+ * role: 'lead', 'second' or 'neglected'.
  */
-function leaf({ god, title, band, paragraphs, cloudSize, data, role }) {
+function leaf({ god, title, label, band, paragraphs, cloudSize, role, data, report, ctx }) {
   const g = data.content.gods[god];
   const ui = data.content.ui.result;
-  return h('section', { class: `leaf leaf--${role}`, 'data-god': god },
+  // The painted edition gives every god a painting here. The marble edition
+  // shows the statue, unless it already stands in the header.
+  const picture = painted(ctx.edition)
+    ? plate(god, data, { set: 'paintings' })
+    : !inHeader(report).includes(god) && plate(god, data, { set: 'statues' });
+
+  // The word-portrait sits under the reading when a picture fills the left
+  // leaf, and takes the left leaf itself when there is none.
+  const cloud = cloudSize && tagCloud(god, data, { size: cloudSize, key: cloudSize === 'large' });
+
+  return h('section', { class: `leaf leaf--${role}${picture ? ' leaf--pictured' : ''}`, 'data-god': god },
     h('div', { class: 'leaf__left' },
       h('div', { class: 'leaf__sign' },
-        emblem(god, { size: role === 'lead' ? 112 : 68, wreath: role === 'lead', hollow: role === 'neglected' }),
+        emblem(god, { size: 52, solid: role === 'lead' }),
         h('div', { class: 'leaf__names' },
           h('p', { class: 'leaf__greek', lang: 'grc' }, g.greek),
           g.epithet && h('p', { class: 'leaf__epithet' }, fill(ui.epithet, { god: g.name, epithet: g.epithet })),
         ),
       ),
-      cloudSize && tagCloud(god, data, { size: cloudSize, key: cloudSize === 'large' }),
+      picture || cloud,
     ),
     h('div', { class: 'leaf__right' },
+      h('p', { class: 'kicker leaf__label' }, label),
       h('h2', { class: 'leaf__title' }, title),
       h('p', { class: 'leaf__meta' },
         h('span', { class: 'leaf__pole' }, g.pole),
         band && h('span', { class: `chip chip--${band}` }, ui.band[band]),
       ),
       paragraphs.filter(Boolean).map((text) => h('p', { class: 'reading' }, text)),
+      picture && cloud,
       g.symbols && h('p', { class: 'leaf__symbols' }, fill(ui.symbols, { symbols: g.symbols })),
     ),
   );
@@ -48,26 +67,29 @@ function leaf({ god, title, band, paragraphs, cloudSize, data, role }) {
 export const sections = {
   headline({ data, report, ctx }) {
     const ui = data.content.ui.result;
-    const lead = report.lead && report.lead.god;
-    const second = report.second && report.second.god;
-    // The lead god colours the header and stands in it, wreathed, with the
-    // second god beside. With no lead the whole temple stands there instead.
-    return h('header', { class: 'verdict', 'data-god': lead || null },
-      h('div', { class: 'meander', 'aria-hidden': 'true' }),
-      h('div', { class: 'verdict__body' },
-        h('div', { class: 'verdict__text' },
-          ctx.shared && h('p', { class: 'verdict__notice' }, ui.sharedNotice),
-          h('p', { class: 'verdict__kicker' }, ui.kicker),
-          h('h1', { class: 'verdict__code', tabindex: '-1' }, report.code),
-          h('p', { class: 'verdict__tier' }, ui.tier[report.tier]),
-          report.tierParagraphs.map((text) => h('p', { class: 'reading reading--wide' }, text)),
+    const gods = data.content.gods;
+    const standing = inHeader(report);
+    const epithets = standing.map((god) => gods[god].epithet).filter(Boolean);
+    // The lead god gives the header its colour and stands in it. A shared lead
+    // puts both gods there. With no lead, three of the pantheon stand instead.
+    return h('header', { class: `verdict verdict--${report.tier}${standing.length > 1 ? ' verdict--pair' : ''}`, 'data-god': standing[0] || null },
+      h('div', { class: 'verdict__text' },
+        ctx.shared && h('p', { class: 'verdict__notice' }, ui.sharedNotice),
+        h('p', { class: 'kicker' },
+          ui.kicker, h('span', { class: 'kicker__sep', 'aria-hidden': 'true' }, ' · '), h('span', { class: 'verdict__tier' }, ui.tier[report.tier]),
         ),
-        h('div', { class: 'verdict__signs' },
-          lead
-            ? [emblem(lead, { size: 176, wreath: true }), second && emblem(second, { size: 76 })]
-            : temple(),
-        ),
+        // A slash between two names stays with the first when the line breaks.
+        h('h1', { class: 'verdict__code', tabindex: '-1' }, report.code.replace(' / ', '\u00a0/ ')),
+        epithets.length > 0 && h('p', { class: 'verdict__epithet' }, epithets.join(' · ')),
+        report.tierParagraphs.map((text) => h('p', { class: 'reading reading--wide' }, text)),
       ),
+      standing.length > 0
+        ? h('div', { class: 'verdict__plates' },
+            standing.map((god, i) => plate(god, data, { set: 'statues', eager: true, sizes: '(min-width: 56rem) 24rem, 92vw', extraClass: i ? 'verdict__second' : 'verdict__lead' })),
+          )
+        : h('div', { class: 'verdict__plates verdict__plates--slices' },
+            (data.plates.hero || []).map((god) => slice(god, data, { set: 'statues' })),
+          ),
     );
   },
 
@@ -79,18 +101,18 @@ export const sections = {
     const reading = pulls.length ? fill(ui.wheelStrongest, { god: gods[pulls[0].god].name }) : ui.wheelStill;
     return h('section', { class: 'compass' },
       h('div', { class: 'compass__text' },
+        h('p', { class: 'kicker' }, ui.wheelKicker),
         h('h2', { class: 'section-title' }, ui.wheelTitle),
         h('p', { class: 'section-intro' }, ui.wheelIntro),
-        h('p', { class: 'compass__strongest', 'data-god': pulls.length ? pulls[0].god : null }, reading),
-        pulls.length > 0 && h('h3', { class: 'compass__order-title' }, ui.wheelOrder),
-        pulls.length > 0 && h('ol', { class: 'compass__order' },
+        pulls.length > 0 && h('ol', { class: 'compass__order', 'aria-label': ui.wheelOrder },
           pulls.map((row, i) => h('li', { class: i === 0 ? 'is-marked' : null, 'data-god': row.god },
-            emblem(row.god, { size: 30 }),
+            emblem(row.god, { size: 30, solid: i === 0 }),
             h('span', { class: 'compass__god' }, gods[row.god].name),
             h('span', { class: 'compass__pole' }, gods[row.god].pole),
             h('span', { class: `chip chip--${row.band}` }, ui.band[row.band]),
           )),
         ),
+        h('p', { class: 'compass__strongest' }, reading),
       ),
       h('figure', { class: 'compass__wheel' },
         wheel(data, { report, label: fill(ui.wheelSpoken, { reading }) }),
@@ -98,35 +120,37 @@ export const sections = {
     );
   },
 
-  lead({ data, report }) {
+  lead({ data, report, ctx }) {
     if (!report.lead) return null;
+    const ui = data.content.ui.result;
     const name = data.content.gods[report.lead.god].name;
     return leaf({
-      god: report.lead.god, data, cloudSize: 'large', band: report.lead.band,
-      title: fill(data.content.ui.result.leadTitle, { god: name }),
+      god: report.lead.god, data, report, ctx, cloudSize: 'large', band: report.lead.band,
+      label: ui.leadLabel, title: fill(ui.leadTitle, { god: name }),
       paragraphs: [report.lead.text],
       role: 'lead',
     });
   },
 
-  second({ data, report }) {
+  second({ data, report, ctx }) {
     if (!report.second) return null;
+    const ui = data.content.ui.result;
     const name = data.content.gods[report.second.god].name;
     return leaf({
-      god: report.second.god, data, cloudSize: 'small', band: report.second.band,
-      title: fill(data.content.ui.result.secondTitle, { god: name }),
+      god: report.second.god, data, report, ctx, cloudSize: 'small', band: report.second.band,
+      label: ui.secondLabel, title: fill(ui.secondTitle, { god: name }),
       paragraphs: [report.second.text],
       role: 'second',
     });
   },
 
-  neglected({ data, report }) {
+  neglected({ data, report, ctx }) {
     if (!report.neglected) return null;
     const ui = data.content.ui.result;
     const name = data.content.gods[report.neglected.god].name;
     return leaf({
-      god: report.neglected.god, data, cloudSize: 'small', band: null,
-      title: fill(ui.neglectedTitle, { god: name }),
+      god: report.neglected.god, data, report, ctx, cloudSize: 'small', band: null,
+      label: ui.neglectedLabel, title: fill(ui.neglectedTitle, { god: name }),
       paragraphs: [report.neglected.text, ui.neglectedRule],
       role: 'neglected',
     });
@@ -135,16 +159,20 @@ export const sections = {
   polarities({ data, report }) {
     const ui = data.content.ui.result;
     return h('section', { class: 'profile' },
+      h('p', { class: 'kicker' }, ui.polaritiesKicker),
       h('h2', { class: 'section-title' }, report.tier === 'pantheios' ? ui.leaningsTitle : ui.polaritiesTitle),
       h('p', { class: 'section-intro' }, ui.polaritiesIntro),
       h('ol', { class: 'profile__rows' },
-        report.polarities.map((row) => {
+        report.polarities.map((row, i) => {
           let note;
           if (row.text) note = h('p', { class: 'reading' }, row.text);
           else if (row.status === 'lead' || row.status === 'second') note = h('p', { class: 'profile__aside' }, ui.describedAbove);
           else note = h('p', { class: 'profile__aside' }, ui.balancedNote);
           return h('li', { class: `profile__row profile__row--${row.status}` },
-            h('p', { class: 'profile__question' }, data.content.polarities[row.id].question),
+            h('p', { class: 'profile__question' },
+              h('span', { class: 'profile__number', 'aria-hidden': 'true' }, roman(i + 1)),
+              data.content.polarities[row.id].question,
+            ),
             polarityBar(row, data),
             note,
           );
@@ -178,7 +206,7 @@ export const sections = {
     });
 
     const copy = ctx.canShare && !ctx.shared && h('button', {
-      class: 'button button--quiet', type: 'button',
+      class: 'button', type: 'button',
       onClick: async () => {
         const url = ctx.shareUrl();
         try {

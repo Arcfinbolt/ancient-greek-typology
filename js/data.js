@@ -4,16 +4,17 @@
 
 import { buildModel } from './model.js';
 
-export const CONFIG_FILES = ['model', 'items', 'scoring', 'app'];
-export const CONTENT_FILES = ['ui', 'gods', 'polarities', 'items', 'tags', 'snippets'];
+export const CONFIG_FILES = ['model', 'items', 'scoring', 'app', 'plates'];
+export const CONTENT_FILES = ['ui', 'gods', 'polarities', 'items', 'tags', 'snippets', 'plates'];
 
-/** raw: { config: { model, items, scoring, app }, content: { ui, gods, ... }, locale } */
+/** raw: { config: { model, items, scoring, app, plates }, content: { ui, gods, ... }, locale } */
 export function assemble(raw) {
   return {
     model: buildModel(raw.config.model),
     items: raw.config.items,
     scoring: raw.config.scoring,
     app: raw.config.app,
+    plates: raw.config.plates,
     content: raw.content,
     locale: raw.locale,
   };
